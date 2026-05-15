@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +31,7 @@
     }
 
     .top-header{
-      background:linear-gradient(
-        135deg,
-        #0b5b74,
-        #1d8aa1
-      );
+      background:linear-gradient(135deg,#0b5b74,#1d8aa1);
       color:white;
       text-align:center;
       padding:25px 15px;
@@ -78,11 +74,6 @@
       object-fit:cover;
     }
 
-    .photo-box p{
-      margin-top:10px;
-      font-weight:bold;
-    }
-
     table{
       width:100%;
       border-collapse:collapse;
@@ -100,23 +91,10 @@
       background:#f2f2f2;
     }
 
-    .bottom-section{
-      padding:20px;
-    }
-
-    .notice-box{
-      border:2px solid #222;
-      padding:15px;
-      text-align:center;
-      font-size:16px;
-      font-weight:bold;
-      background:#f7f7f7;
-    }
-
     .signature-section{
       display:flex;
       justify-content:flex-end;
-      margin-top:40px;
+      margin:40px 20px;
       text-align:center;
     }
 
@@ -137,7 +115,6 @@
       font-size:15px;
       color:#444;
       border-top:1px solid #ccc;
-      background:#fafafa;
     }
 
     .download-btn{
@@ -150,38 +127,6 @@
       cursor:pointer;
     }
 
-    .download-btn:hover{
-      background:#14708c;
-    }
-
-    @media(max-width:768px){
-
-      body{
-        padding:10px;
-      }
-
-      .card-body{
-        flex-direction:column-reverse;
-      }
-
-      .right-section{
-        width:100%;
-      }
-
-      .signature-section{
-        justify-content:center;
-      }
-
-      .top-header h1{
-        font-size:24px;
-      }
-
-      table td{
-        font-size:13px;
-      }
-
-    }
-
   </style>
 </head>
 
@@ -190,15 +135,8 @@
   <div class="id-card">
 
     <div class="top-header">
-
-      <h1>
-        अखिल भारतीय नर्मदीय ब्राह्मण समाज महासभा
-      </h1>
-
-      <h3>
-        समाज पहचान पत्र
-      </h3>
-
+      <h1>अखिल भारतीय नर्मदीय ब्राह्मण समाज महासभा</h1>
+      <h3>समाज पहचान पत्र</h3>
     </div>
 
     <div class="card-body">
@@ -243,11 +181,6 @@
           </tr>
 
           <tr>
-            <td>वैवाहिक स्थिति</td>
-            <td id="maritalStatus"></td>
-          </tr>
-
-          <tr>
             <td>व्यवसाय</td>
             <td id="profession"></td>
           </tr>
@@ -267,11 +200,6 @@
             <td id="contact1"></td>
           </tr>
 
-          <tr>
-            <td>आधार नंबर</td>
-            <td id="aadhaarNumber"></td>
-          </tr>
-
         </table>
 
       </div>
@@ -279,32 +207,19 @@
       <div class="right-section">
 
         <div class="photo-box">
-
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-            id="profilePhoto"
-          >
-
-          <p>सदस्य फोटो</p>
-
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="profilePhoto">
         </div>
 
       </div>
 
     </div>
 
-    <div class="bottom-section">
-
-      <div class="signature-section">
-
-        <div class="signature-box">
-          <div class="signature-line">
-            महासभा अध्यक्ष
-          </div>
+    <div class="signature-section">
+      <div class="signature-box">
+        <div class="signature-line">
+          महासभा अध्यक्ष
         </div>
-
       </div>
-
     </div>
 
     <div class="footer-note">
@@ -319,54 +234,22 @@
 
   <script>
 
-    document.getElementById("memberId").innerText =
-      localStorage.getItem("memberId") || "";
+    document.getElementById("memberId").innerText = localStorage.getItem("memberId") || "";
+    document.getElementById("fullName").innerText = localStorage.getItem("fullName") || "";
+    document.getElementById("fatherName").innerText = localStorage.getItem("fatherName") || "";
+    document.getElementById("motherName").innerText = localStorage.getItem("motherName") || "";
+    document.getElementById("gotra").innerText = localStorage.getItem("gotra") || "";
+    document.getElementById("nativePlace").innerText = localStorage.getItem("nativePlace") || "";
+    document.getElementById("age").innerText = localStorage.getItem("age") || "";
+    document.getElementById("profession").innerText = localStorage.getItem("profession") || "";
+    document.getElementById("bloodGroup").innerText = localStorage.getItem("bloodGroup") || "";
+    document.getElementById("ikaiName").innerText = localStorage.getItem("ikaiName") || "";
+    document.getElementById("contact1").innerText = localStorage.getItem("contact1") || "";
 
-    document.getElementById("fullName").innerText =
-      localStorage.getItem("fullName") || "";
-
-    document.getElementById("fatherName").innerText =
-      localStorage.getItem("fatherName") || "";
-
-    document.getElementById("motherName").innerText =
-      localStorage.getItem("motherName") || "";
-
-    document.getElementById("gotra").innerText =
-      localStorage.getItem("gotra") || "";
-
-    document.getElementById("nativePlace").innerText =
-      localStorage.getItem("nativePlace") || "";
-
-    document.getElementById("age").innerText =
-      localStorage.getItem("age") || "";
-
-    document.getElementById("maritalStatus").innerText =
-      localStorage.getItem("maritalStatus") || "";
-
-    document.getElementById("profession").innerText =
-      localStorage.getItem("profession") || "";
-
-    document.getElementById("bloodGroup").innerText =
-      localStorage.getItem("bloodGroup") || "";
-
-    document.getElementById("ikaiName").innerText =
-      localStorage.getItem("ikaiName") || "";
-
-    document.getElementById("contact1").innerText =
-      localStorage.getItem("contact1") || "";
-
-    document.getElementById("aadhaarNumber").innerText =
-      localStorage.getItem("aadhaarNumber") || "";
-
-    let savedPhoto =
-      localStorage.getItem("photo");
+    let savedPhoto = localStorage.getItem("photo");
 
     if(savedPhoto){
-
-      document.getElementById(
-        "profilePhoto"
-      ).src = savedPhoto;
-
+      document.getElementById("profilePhoto").src = savedPhoto;
     }
 
   </script>

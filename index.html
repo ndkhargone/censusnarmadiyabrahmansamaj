@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,18 +19,11 @@
       color:white;
     }
 
-    /* HEADER */
-
     .main-header{
       width:100%;
       padding:70px 20px;
       text-align:center;
-      background:linear-gradient(
-        135deg,
-        #0d5d73,
-        #2b8aa0,
-        #5aa7b5
-      );
+      background:linear-gradient(135deg,#0d5d73,#2b8aa0,#5aa7b5);
     }
 
     .tagline{
@@ -61,8 +53,6 @@
     .main-header p{
       font-size:28px;
     }
-
-    /* FORM */
 
     .wrapper{
       padding:40px 20px;
@@ -118,12 +108,6 @@
       resize:none;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus{
-      border:1px solid #20c0dc;
-    }
-
     .full-width{
       grid-column:span 2;
     }
@@ -137,7 +121,6 @@
       color:white;
       font-size:22px;
       cursor:pointer;
-      transition:0.3s;
     }
 
     button:hover{
@@ -173,8 +156,6 @@
 
 <body>
 
-  <!-- HEADER -->
-
   <div class="main-header">
 
     <div class="tagline">
@@ -192,9 +173,6 @@
     </p>
 
   </div>
-
-
-  <!-- FORM -->
 
   <div class="wrapper">
 
@@ -236,12 +214,10 @@
 
         <div class="input-box">
           <label>वैवाहिक स्थिति</label>
-
           <select id="maritalStatus">
             <option>Married</option>
             <option>Unmarried</option>
           </select>
-
         </div>
 
         <div class="input-box">
@@ -249,23 +225,17 @@
           <input type="text" id="profession">
         </div>
 
-   
         <div class="input-box">
           <label>ब्लड ग्रुप</label>
           <input type="text" id="bloodGroup">
         </div>
 
-        <!-- IKAI -->
-
         <div class="input-box">
-
           <label>इकाई नाम</label>
 
           <select id="ikaiName">
-
             <option value="">इकाई चुनें</option>
-
-            <option>खंडवा (Khandwa)</option>
+              <option>खंडवा (Khandwa)</option>
             <option>होशंगाबाद (Hoshangabad)</option>
             <option>धार (Dhar)</option>
             <option>भोपाल (Bhopal)</option>
@@ -298,6 +268,7 @@
             <option>बड़वाह (Barwah)</option>
             <option>सेंधवा (Sendhwa)</option>
             <option>म्हो (Mhow)</option>
+            <option>उज्जैन (Ujjain)</option>
             <option>देवास (Dewas)</option>
             <option>मुंडी (Mundi)</option>
             <option>बामनला (Bamnala)</option>
@@ -315,7 +286,6 @@
             <option>नरमदा नगर पुनासा (Narmada Nagar Punasa)</option>
 			<option>Others</option>
           </select>
-
         </div>
 
         <div class="input-box">
@@ -329,13 +299,8 @@
         </div>
 
         <div class="input-box">
-          <label>मोबाइल नंबर 1</label>
+          <label>मोबाइल नंबर</label>
           <input type="text" id="contact1">
-        </div>
-
-        <div class="input-box">
-          <label>मोबाइल नंबर 2</label>
-          <input type="text" id="contact2">
         </div>
 
         <div class="input-box">
@@ -354,11 +319,9 @@
         </div>
 
         <div class="input-box full-width">
-
           <button type="button" onclick="generateCard()">
             जमा करें
           </button>
-
         </div>
 
       </div>
@@ -367,103 +330,28 @@
 
   </div>
 
-
   <script>
 
     function generateCard(){
 
-      localStorage.setItem(
-        "memberId",
-        "NB" + Math.floor(100000 + Math.random()*900000)
-      );
+      localStorage.setItem("memberId","NB" + Math.floor(100000 + Math.random()*900000));
+      localStorage.setItem("fullName", document.getElementById("fullName").value);
+      localStorage.setItem("fatherName", document.getElementById("fatherName").value);
+      localStorage.setItem("motherName", document.getElementById("motherName").value);
+      localStorage.setItem("gotra", document.getElementById("gotra").value);
+      localStorage.setItem("nativePlace", document.getElementById("nativePlace").value);
+      localStorage.setItem("age", document.getElementById("age").value);
+      localStorage.setItem("maritalStatus", document.getElementById("maritalStatus").value);
+      localStorage.setItem("profession", document.getElementById("profession").value);
+      localStorage.setItem("bloodGroup", document.getElementById("bloodGroup").value);
+      localStorage.setItem("ikaiName", document.getElementById("ikaiName").value);
+      localStorage.setItem("district", document.getElementById("district").value);
+      localStorage.setItem("pinCode", document.getElementById("pinCode").value);
+      localStorage.setItem("contact1", document.getElementById("contact1").value);
+      localStorage.setItem("aadhaarNumber", document.getElementById("aadhaarNumber").value);
+      localStorage.setItem("currentAddress", document.getElementById("currentAddress").value);
 
-      localStorage.setItem(
-        "fullName",
-        document.getElementById("fullName").value
-      );
-
-      localStorage.setItem(
-        "fatherName",
-        document.getElementById("fatherName").value
-      );
-
-      localStorage.setItem(
-        "motherName",
-        document.getElementById("motherName").value
-      );
-
-      localStorage.setItem(
-        "gotra",
-        document.getElementById("gotra").value
-      );
-
-      localStorage.setItem(
-        "nativePlace",
-        document.getElementById("nativePlace").value
-      );
-
-      localStorage.setItem(
-        "age",
-        document.getElementById("age").value
-      );
-
-      localStorage.setItem(
-        "maritalStatus",
-        document.getElementById("maritalStatus").value
-      );
-
-      localStorage.setItem(
-        "profession",
-        document.getElementById("profession").value
-      );
-
-      localStorage.setItem(
-        "professionDomain",
-        document.getElementById("professionDomain").value
-      );
-
-      localStorage.setItem(
-        "bloodGroup",
-        document.getElementById("bloodGroup").value
-      );
-
-      localStorage.setItem(
-        "ikaiName",
-        document.getElementById("ikaiName").value
-      );
-
-      localStorage.setItem(
-        "district",
-        document.getElementById("district").value
-      );
-
-      localStorage.setItem(
-        "pinCode",
-        document.getElementById("pinCode").value
-      );
-
-      localStorage.setItem(
-        "contact1",
-        document.getElementById("contact1").value
-      );
-
-      localStorage.setItem(
-        "contact2",
-        document.getElementById("contact2").value
-      );
-
-      localStorage.setItem(
-        "aadhaarNumber",
-        document.getElementById("aadhaarNumber").value
-      );
-
-      localStorage.setItem(
-        "currentAddress",
-        document.getElementById("currentAddress").value
-      );
-
-      let file =
-        document.getElementById("photo").files[0];
+      let file = document.getElementById("photo").files[0];
 
       if(file){
 
@@ -471,13 +359,8 @@
 
         reader.onload = function(e){
 
-          localStorage.setItem(
-            "photo",
-            e.target.result
-          );
-
-          window.location.href =
-            "identity-card.html";
+          localStorage.setItem("photo", e.target.result);
+          window.location.href = "identity-card.html";
 
         };
 
@@ -485,8 +368,8 @@
 
       }else{
 
-        window.location.href =
-          "identity-card.html";
+        window.location.href = "identity-card.html";
+
       }
 
     }
