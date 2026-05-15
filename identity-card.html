@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>समाज पहचान पत्र</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#e8e8e8;
+      padding:30px;
+    }
+
+    .id-card{
+      max-width:950px;
+      margin:auto;
+      background:white;
+      border:4px solid #222;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .top-header{
+      background:linear-gradient(
+        135deg,
+        #0b5b74,
+        #1d8aa1
+      );
+      color:white;
+      text-align:center;
+      padding:25px 15px;
+    }
+
+    .top-header h1{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+
+    .top-header h3{
+      font-size:22px;
+      font-weight:normal;
+    }
+
+    .card-body{
+      display:flex;
+      gap:20px;
+      padding:20px;
+    }
+
+    .left-section{
+      flex:2;
+    }
+
+    .right-section{
+      width:230px;
+      text-align:center;
+    }
+
+    .photo-box{
+      border:3px solid #222;
+      padding:10px;
+      border-radius:10px;
+    }
+
+    .photo-box img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .photo-box p{
+      margin-top:10px;
+      font-weight:bold;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    table td{
+      border:2px solid #222;
+      padding:8px;
+      font-size:15px;
+    }
+
+    table td:first-child{
+      width:40%;
+      font-weight:bold;
+      background:#f2f2f2;
+    }
+
+    .bottom-section{
+      padding:20px;
+    }
+
+    .notice-box{
+      border:2px solid #222;
+      padding:15px;
+      text-align:center;
+      font-size:16px;
+      font-weight:bold;
+      background:#f7f7f7;
+    }
+
+    .signature-section{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:40px;
+      text-align:center;
+    }
+
+    .signature-box{
+      width:220px;
+    }
+
+    .signature-line{
+      border-top:2px solid black;
+      margin-top:60px;
+      padding-top:8px;
+      font-weight:bold;
+    }
+
+    .footer-note{
+      text-align:center;
+      padding:15px;
+      font-size:15px;
+      color:#444;
+      border-top:1px solid #ccc;
+      background:#fafafa;
+    }
+
+    .download-btn{
+      width:100%;
+      padding:16px;
+      border:none;
+      background:#0b5b74;
+      color:white;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .download-btn:hover{
+      background:#14708c;
+    }
+
+    @media(max-width:768px){
+
+      body{
+        padding:10px;
+      }
+
+      .card-body{
+        flex-direction:column-reverse;
+      }
+
+      .right-section{
+        width:100%;
+      }
+
+      .signature-section{
+        justify-content:center;
+      }
+
+      .top-header h1{
+        font-size:24px;
+      }
+
+      table td{
+        font-size:13px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="id-card">
+
+    <div class="top-header">
+
+      <h1>
+        अखिल भारतीय नर्मदीय ब्राह्मण समाज महासभा
+      </h1>
+
+      <h3>
+        समाज पहचान पत्र
+      </h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <div class="left-section">
+
+        <table>
+
+          <tr>
+            <td>सदस्य आईडी</td>
+            <td id="memberId"></td>
+          </tr>
+
+          <tr>
+            <td>पूरा नाम</td>
+            <td id="fullName"></td>
+          </tr>
+
+          <tr>
+            <td>पिता का नाम</td>
+            <td id="fatherName"></td>
+          </tr>
+
+          <tr>
+            <td>माता का नाम</td>
+            <td id="motherName"></td>
+          </tr>
+
+          <tr>
+            <td>गोत्र</td>
+            <td id="gotra"></td>
+          </tr>
+
+          <tr>
+            <td>मूल निवासी</td>
+            <td id="nativePlace"></td>
+          </tr>
+
+          <tr>
+            <td>आयु</td>
+            <td id="age"></td>
+          </tr>
+
+          <tr>
+            <td>वैवाहिक स्थिति</td>
+            <td id="maritalStatus"></td>
+          </tr>
+
+          <tr>
+            <td>व्यवसाय</td>
+            <td id="profession"></td>
+          </tr>
+
+          <tr>
+            <td>ब्लड ग्रुप</td>
+            <td id="bloodGroup"></td>
+          </tr>
+
+          <tr>
+            <td>इकाई नाम</td>
+            <td id="ikaiName"></td>
+          </tr>
+
+          <tr>
+            <td>मोबाइल नंबर</td>
+            <td id="contact1"></td>
+          </tr>
+
+          <tr>
+            <td>आधार नंबर</td>
+            <td id="aadhaarNumber"></td>
+          </tr>
+
+        </table>
+
+      </div>
+
+      <div class="right-section">
+
+        <div class="photo-box">
+
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            id="profilePhoto"
+          >
+
+          <p>सदस्य फोटो</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="bottom-section">
+
+      <div class="signature-section">
+
+        <div class="signature-box">
+          <div class="signature-line">
+            महासभा अध्यक्ष
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-note">
+      यह पहचान पत्र समाज महासभा द्वारा जारी किया गया है।
+    </div>
+
+    <button class="download-btn" onclick="window.print()">
+      डाउनलोड / प्रिंट करें
+    </button>
+
+  </div>
+
+  <script>
+
+    document.getElementById("memberId").innerText =
+      localStorage.getItem("memberId") || "";
+
+    document.getElementById("fullName").innerText =
+      localStorage.getItem("fullName") || "";
+
+    document.getElementById("fatherName").innerText =
+      localStorage.getItem("fatherName") || "";
+
+    document.getElementById("motherName").innerText =
+      localStorage.getItem("motherName") || "";
+
+    document.getElementById("gotra").innerText =
+      localStorage.getItem("gotra") || "";
+
+    document.getElementById("nativePlace").innerText =
+      localStorage.getItem("nativePlace") || "";
+
+    document.getElementById("age").innerText =
+      localStorage.getItem("age") || "";
+
+    document.getElementById("maritalStatus").innerText =
+      localStorage.getItem("maritalStatus") || "";
+
+    document.getElementById("profession").innerText =
+      localStorage.getItem("profession") || "";
+
+    document.getElementById("bloodGroup").innerText =
+      localStorage.getItem("bloodGroup") || "";
+
+    document.getElementById("ikaiName").innerText =
+      localStorage.getItem("ikaiName") || "";
+
+    document.getElementById("contact1").innerText =
+      localStorage.getItem("contact1") || "";
+
+    document.getElementById("aadhaarNumber").innerText =
+      localStorage.getItem("aadhaarNumber") || "";
+
+    let savedPhoto =
+      localStorage.getItem("photo");
+
+    if(savedPhoto){
+
+      document.getElementById(
+        "profilePhoto"
+      ).src = savedPhoto;
+
+    }
+
+  </script>
+
+</body>
+</html>
