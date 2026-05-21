@@ -201,64 +201,55 @@
 
 <script>
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwXyawWnn30K7_Q-AfgncstIA3NisH9HsdFTHlDcqFBcexdOo9FjzzQuGa10pR7rK2u/exec";
-
 async function searchMember() {
+
+  const id = document.getElementById("memberInput").value;
+
+  if (!id) {
+    alert("Enter Member ID");
+    return;
+  }
+
+  const url =
+    "https://script.google.com/macros/s/AKfycbxOpsBgJrAAAyXMQ40cnZHBOE8zZniCF2RDxzchh4XrAjuJQoB9xGwX-2U-tDicsgYl/exec"
+    + "?memberId=" + encodeURIComponent(id);
 
   try {
 
-    const id = document.getElementById("memberInput").value.trim();
+    const response = await fetch(url, {
+      method: "GET"
+    });
 
-    if (!id) {
-      alert("Enter Member ID");
-      return;
-    }
-
-    document.getElementById("status").innerText = "🔍 Searching...";
-    document.getElementById("card").style.display = "none";
-
-    const response = await fetch(
-      SCRIPT_URL + "?memberId=" + encodeURIComponent(id)
-    );
-
-    const result = await response.json();
+    const text = await response.text();
+    const result = JSON.parse(text);
 
     if (result.status !== "success") {
-      document.getElementById("status").innerText = "❌ Member not found";
-      alert("❌ Member not found");
+      alert("Member not found");
       return;
     }
 
     const data = result.data;
 
     document.getElementById("card").style.display = "block";
-    document.getElementById("status").innerText = "✅ Data loaded";
 
-    document.getElementById("memberId").innerText = data.memberId || "-";
-    document.getElementById("fullName").innerText = data.fullName || "-";
-    document.getElementById("fatherName").innerText = data.fatherName || "-";
-    document.getElementById("motherName").innerText = data.motherName || "-";
-    document.getElementById("gotra").innerText = data.gotra || "-";
-    document.getElementById("nativePlace").innerText = data.nativePlace || "-";
-    document.getElementById("age").innerText = data.age || "-";
-    document.getElementById("profession").innerText = data.profession || "-";
-    document.getElementById("bloodGroup").innerText = data.bloodGroup || "-";
-    document.getElementById("ikaiName").innerText = data.ikaiName || "-";
-    document.getElementById("contact1").innerText = data.contact1 || "-";
+    document.getElementById("memberId").innerText = data.memberId;
+    document.getElementById("fullName").innerText = data.fullName;
+    document.getElementById("fatherName").innerText = data.fatherName;
+    document.getElementById("motherName").innerText = data.motherName;
+    document.getElementById("gotra").innerText = data.gotra;
+    document.getElementById("nativePlace").innerText = data.nativePlace;
+    document.getElementById("age").innerText = data.age;
+    document.getElementById("profession").innerText = data.profession;
+    document.getElementById("bloodGroup").innerText = data.bloodGroup;
+    document.getElementById("ikaiName").innerText = data.ikaiName;
+    document.getElementById("contact1").innerText = data.contact1;
 
-    // PHOTO HANDLING
-    const img = document.getElementById("profilePhoto");
-
-    if (data.photo && data.photo.includes("http")) {
-      img.src = data.photo;
-    } else {
-      img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-    }
+    document.getElementById("profilePhoto").src =
+      data.photo || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
   } catch (err) {
     console.error(err);
-    alert("❌ Server error");
+    alert("Network error (check server or Live Server)");
   }
 }
 
