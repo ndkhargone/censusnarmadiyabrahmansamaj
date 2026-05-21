@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>समाज पंजीकरण फॉर्म</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#02151c;
+      color:white;
+    }
+
+    .main-header{
+      width:100%;
+      padding:70px 20px;
+      text-align:center;
+      background:linear-gradient(
+        135deg,
+        #0d5d73,
+        #2b8aa0,
+        #5aa7b5
+      );
+    }
+
+    .tagline{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,0.5);
+      padding:10px 25px;
+      border-radius:30px;
+      font-size:20px;
+      margin-bottom:25px;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .main-header h1{
+      font-size:48px;
+      margin-bottom:20px;
+      line-height:1.3;
+    }
+
+    .line{
+      width:120px;
+      height:5px;
+      background:#ffd54f;
+      margin:0 auto 20px;
+      border-radius:10px;
+    }
+
+    .main-header p{
+      font-size:28px;
+    }
+
+    .wrapper{
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:1200px;
+      background:#06212a;
+      border:1px solid #0f738f;
+      border-radius:20px;
+      padding:35px;
+    }
+
+    .container h2{
+      text-align:center;
+      margin-bottom:30px;
+      font-size:34px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .input-box{
+      display:flex;
+      flex-direction:column;
+    }
+
+    label{
+      margin-bottom:10px;
+      font-size:19px;
+      color:#d6d6d6;
+    }
+
+    input,
+    select,
+    textarea{
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      background:#0d3441;
+      color:white;
+      font-size:16px;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+    }
+
+    .full-width{
+      grid-column:span 2;
+    }
+
+    button{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:14px;
+      background:#0f738f;
+      color:white;
+      font-size:22px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#1694b5;
+    }
+
+    @media(max-width:768px){
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .full-width{
+        grid-column:span 1;
+      }
+
+      .main-header h1{
+        font-size:30px;
+      }
+
+      .main-header p{
+        font-size:20px;
+      }
+
+      .container{
+        padding:20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="main-header">
+
+    <div class="tagline">
+      ॥ नर्मदे हर ॥
+    </div>
+
+    <h1>
+      अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा
+    </h1>
+
+    <div class="line"></div>
+
+    <p>
+      सामाजिक जनगणना पोर्टल
+    </p>
+
+  </div>
+
+  <div class="wrapper">
+
+    <div class="container">
+
+      <h2>समाज पंजीकरण फॉर्म</h2>
+
+      <div class="form-grid">
+
+        <div class="input-box">
+          <label>पूरा नाम</label>
+          <input type="text" id="fullName">
+        </div>
+
+        <div class="input-box">
+          <label>पिता का नाम</label>
+          <input type="text" id="fatherName">
+        </div>
+
+        <div class="input-box">
+          <label>माता का नाम</label>
+          <input type="text" id="motherName">
+        </div>
+
+        <div class="input-box">
+          <label>गोत्र</label>
+          <input type="text" id="gotra">
+        </div>
+
+        <div class="input-box">
+          <label>मूल निवासी</label>
+          <input type="text" id="nativePlace">
+        </div>
+
+        <div class="input-box">
+          <label>आयु</label>
+          <input type="number" id="age">
+        </div>
+
+        <div class="input-box">
+
+          <label>वैवाहिक स्थिति</label>
+
+          <select id="maritalStatus">
+            <option>Married</option>
+            <option>Unmarried</option>
+          </select>
+
+        </div>
+
+        <div class="input-box">
+          <label>व्यवसाय</label>
+          <input type="text" id="profession">
+        </div>
+
+        <div class="input-box">
+          <label>शिक्षा</label>
+          <input type="text" id="education">
+        </div>
+
+        <div class="input-box">
+          <label>ब्लड ग्रुप</label>
+          <input type="text" id="bloodGroup">
+        </div>
+
+        <div class="input-box">
+
+          <label>इकाई नाम</label>
+
+          <select id="ikaiName">
+
+            <option>इंदौर (Indore)</option>
+            <option>भोपाल (Bhopal)</option>
+            <option>खंडवा (Khandwa)</option>
+            <option>उज्जैन (Ujjain)</option>
+
+            <option value="Others">
+              अन्य (Others)
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="input-box"
+             id="otherCityBox"
+             style="display:none;">
+
+          <label>
+            अन्य शहर / इकाई का नाम
+          </label>
+
+          <input
+            type="text"
+            id="otherCity"
+            placeholder="शहर / इकाई का नाम लिखें"
+          >
+
+        </div>
+
+        <div class="input-box">
+          <label>जिला</label>
+          <input type="text" id="district">
+        </div>
+
+        <div class="input-box">
+          <label>पिन कोड</label>
+          <input type="text" id="pinCode">
+        </div>
+
+        <div class="input-box">
+          <label>मोबाइल नंबर</label>
+          <input type="text" id="contact1">
+        </div>
+
+        <div class="input-box">
+          <label>आधार कार्ड नंबर</label>
+          <input type="text" id="aadhaarNumber">
+        </div>
+
+        <div class="input-box">
+          <label>फोटो अपलोड करें</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+
+        <div class="input-box full-width">
+          <label>स्थायी पता</label>
+          <textarea rows="4" id="permanentAddress"></textarea>
+        </div>
+
+        <div class="input-box full-width">
+          <label>वर्तमान पता</label>
+          <textarea rows="4" id="currentAddress"></textarea>
+        </div>
+
+        <div class="input-box full-width">
+
+          <button
+            type="button"
+            onclick="generateCard()">
+
+            जमा करें
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+  // =========================
+  // GOOGLE APPS SCRIPT URL
+  // =========================
+
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxhUpAlQYbXpE3Yb0gtZC45Dn_X4HbjVKopVudoBotj48058GGG9XKXWAQq-LK208or/exec";
+
+  // =========================
+  // PANCHIYAN NUMBER
+  // =========================
+
+  const PANCHIYAN_NUMBER = "45397";
+
+  // =========================
+  // IKAI NUMBER
+  // =========================
+
+  const ikaiNumbers = {
+
+    "इंदौर (Indore)": "101",
+    "भोपाल (Bhopal)": "102",
+    "खंडवा (Khandwa)": "103",
+    "उज्जैन (Ujjain)": "104"
+
+  };
+
+  // =========================
+  // OTHER CITY SHOW
+  // =========================
+
+  document.getElementById("ikaiName")
+    .addEventListener("change", function(){
+
+      let selectedValue = this.value;
+
+      let otherCityBox =
+        document.getElementById("otherCityBox");
+
+      if(selectedValue === "Others"){
+
+        otherCityBox.style.display = "flex";
+
+      }else{
+
+        otherCityBox.style.display = "none";
+
+      }
+
+    });
+
+  // =========================
+  // GENERATE CARD
+  // =========================
+
+  async function generateCard(){
+
+    try{
+	const requiredFields = [
+  { id: "fullName", name: "पूरा नाम" },
+  { id: "fatherName", name: "पिता का नाम" },
+  { id: "motherName", name: "माता का नाम" },
+  { id: "gotra", name: "गोत्र" },
+  { id: "nativePlace", name: "मूल निवासी" },
+  { id: "age", name: "आयु" },
+  { id: "maritalStatus", name: "वैवाहिक स्थिति" },
+  { id: "profession", name: "व्यवसाय" },
+  { id: "education", name: "शिक्षा" },
+  { id: "bloodGroup", name: "ब्लड ग्रुप" },
+  { id: "ikaiName", name: "इकाई नाम" },
+  { id: "district", name: "जिला" },
+  { id: "pinCode", name: "पिन कोड" },
+  { id: "contact1", name: "मोबाइल नंबर" },
+  { id: "aadhaarNumber", name: "आधार नंबर" },
+  { id: "permanentAddress", name: "स्थायी पता" },
+  { id: "currentAddress", name: "वर्तमान पता" }
+];
+
+for (let field of requiredFields) {
+
+  let el = document.getElementById(field.id);
+
+  if (!el.value || el.value.trim() === "") {
+
+    alert("❌ यह फील्ड अनिवार्य है: " + field.name);
+
+    el.focus();
+    return;
+  }
+}
+
+      let ikaiValue =
+        document.getElementById("ikaiName").value;
+
+      if(ikaiValue === "Others"){
+
+        ikaiValue =
+          document.getElementById("otherCity").value;
+
+      }
+
+      let ikaiNumber =
+        ikaiNumbers[ikaiValue] || "999";
+
+      let sequenceKey =
+        "sequence_" + ikaiNumber;
+
+      let currentSequence =
+        localStorage.getItem(sequenceKey);
+
+      if(!currentSequence){
+
+        currentSequence = 1;
+
+      }else{
+
+        currentSequence =
+          parseInt(currentSequence) + 1;
+
+      }
+
+      localStorage.setItem(
+        sequenceKey,
+        currentSequence
+      );
+
+      let formattedSequence =
+        String(currentSequence).padStart(5, '0');
+
+      let memberId =
+        "ABNBM/" +
+        PANCHIYAN_NUMBER +
+        "/" +
+        ikaiNumber +
+        "/" +
+        formattedSequence;
+
+      // =========================
+      // PHOTO BASE64
+      // =========================
+
+      let photoBase64 = "";
+
+      const file =
+        document.getElementById("photo").files[0];
+
+      if(file){
+
+        photoBase64 =
+          await convertToBase64(file);
+
+      }
+
+      // =========================
+      // DATA OBJECT
+      // =========================
+
+      let memberData = {
+
+        memberId: memberId,
+
+        fullName:
+          document.getElementById("fullName").value,
+
+        fatherName:
+          document.getElementById("fatherName").value,
+
+        motherName:
+          document.getElementById("motherName").value,
+
+        gotra:
+          document.getElementById("gotra").value,
+
+        nativePlace:
+          document.getElementById("nativePlace").value,
+
+        age:
+          document.getElementById("age").value,
+
+        maritalStatus:
+          document.getElementById("maritalStatus").value,
+
+        profession:
+          document.getElementById("profession").value,
+
+        education:
+          document.getElementById("education").value,
+
+        bloodGroup:
+          document.getElementById("bloodGroup").value,
+
+        ikaiName:
+          ikaiValue,
+
+        district:
+          document.getElementById("district").value,
+
+        pinCode:
+          document.getElementById("pinCode").value,
+
+        contact1:
+          document.getElementById("contact1").value,
+
+        aadhaarNumber:
+          document.getElementById("aadhaarNumber").value,
+
+        permanentAddress:
+          document.getElementById("permanentAddress").value,
+
+        currentAddress:
+          document.getElementById("currentAddress").value,
+
+        photo:
+          photoBase64
+
+      };
+
+      // =========================
+      // SAVE TO GOOGLE SHEET
+      // =========================
+
+      const response = await fetch(
+  SCRIPT_URL,
+  {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+
+    body: JSON.stringify(memberData)
+
+  }
+);
+
+// =========================
+// GET RESPONSE
+// =========================
+
+const result =
+  await response.json();
+
+// =========================
+// SUCCESS
+// =========================
+
+if(result.status === "success"){
+
+  alert(
+    "आपका डेटा सफलतापूर्वक सेव हो गया है।\n\n" +
+    "Reference ID:\n" +
+    memberId +
+    "\n\n" +
+    "Approval के बाद आप ID Card डाउनलोड कर सकते हैं।"
+  );
+
+}
+else if(result.status === "duplicate"){
+
+  alert(
+    "यह Aadhaar Number पहले से मौजूद है।"
+  );
+
+}
+else{
+
+  alert(
+    "Error : " + result.message
+  );
+
+}
+
+      // =========================
+      // CLEAR FORM
+      // =========================
+
+      document.getElementById("fullName").value = "";
+      document.getElementById("fatherName").value = "";
+      document.getElementById("motherName").value = "";
+      document.getElementById("gotra").value = "";
+      document.getElementById("nativePlace").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("profession").value = "";
+      document.getElementById("education").value = "";
+      document.getElementById("bloodGroup").value = "";
+      document.getElementById("district").value = "";
+      document.getElementById("pinCode").value = "";
+      document.getElementById("contact1").value = "";
+      document.getElementById("aadhaarNumber").value = "";
+      document.getElementById("permanentAddress").value = "";
+      document.getElementById("currentAddress").value = "";
+      document.getElementById("photo").value = "";
+
+    }catch(error){
+
+      console.log(error);
+
+      alert(
+        "डेटा सेव करने में समस्या आ रही है"
+      );
+
+    }
+
+  }
+
+  // =========================
+  // CONVERT IMAGE
+  // =========================
+
+  function convertToBase64(file){
+
+    return new Promise((resolve, reject) => {
+
+      const reader =
+        new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = () =>
+        resolve(reader.result);
+
+      reader.onerror = error =>
+        reject(error);
+
+    });
+
+  }
+
+</script>
+
+</body>
+</html>
