@@ -173,10 +173,10 @@ async function searchMember(){
 
     /* ================= FIX IMAGE ================= */
     const img = document.getElementById("profilePhoto");
-console.log("PHOTO:", d);
+	console.log("PHOTO:", d);
     if(d.photo && d.photo.includes("http")){
 	console.log("PHOTO:", d.photo);
-      img.src = d.photo;
+      img.src = "https://drive.google.com/uc?export=view&id=1Ydq5bHjjMS63-GQpymWQmRHIWe5FsJTE";
     } else {
       img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
