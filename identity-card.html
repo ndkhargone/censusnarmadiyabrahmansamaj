@@ -172,7 +172,7 @@ td:first-child{
         <tr><td>व्यवसाय</td><td id="profession"></td></tr>
         <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
         <tr><td>मोबाइल</td><td id="contact1"></td></tr>
-
+		<tr><td>आधार नंबर</td><td id="aadhaarNumber"></td></tr>
       </table>
 
     </div>
@@ -266,6 +266,8 @@ console.log("PHOTO URL FROM APPS SCRIPT:", d);
 
     document.getElementById("contact1").innerText =
       d.contact1 || "";
+	  document.getElementById("aadhaarNumber").innerText =
+  d.aadhaarNumber || "";
 
     /* ================= PHOTO ================= */
 
