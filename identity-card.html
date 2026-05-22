@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>समाज पहचान पत्र</title>
 
+<!-- PDF LIBRARIES -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
+
 body{
   background:#e8e8e8;
   padding:30px;
@@ -18,8 +20,10 @@ body{
 
 input{
   padding:12px;
-  width:300px;
+  width:350px;
   border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
 }
 
 button{
@@ -29,30 +33,52 @@ button{
   border:none;
   cursor:pointer;
   border-radius:8px;
+  font-size:16px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
+
 .id-card{
-  max-width:900px;
+  max-width:1100px;
   margin:auto;
   background:white;
-  border:3px solid #000;
+  border:4px solid #111;
   display:none;
-  border-radius:12px;
+  border-radius:18px;
   overflow:hidden;
+  margin-top:20px;
 }
+
+/* HEADER */
 
 .card-header{
   background:linear-gradient(135deg,#0d5d73,#2b8aa0,#5aa7b5);
   color:white;
-  padding:20px;
   text-align:center;
+  padding:35px 20px;
 }
+
+.card-header h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.card-header p{
+  font-size:22px;
+}
+
+/* BODY */
 
 .container{
   display:flex;
-  padding:20px;
-  gap:20px;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:30px;
+  gap:30px;
+}
+
+.left{
+  flex:2;
 }
 
 table{
@@ -61,32 +87,53 @@ table{
 }
 
 td{
-  border:1px solid #000;
-  padding:6px;
+  border:2px solid #111;
+  padding:10px;
+  font-size:20px;
 }
 
 td:first-child{
+  width:35%;
   font-weight:bold;
   background:#f2f2f2;
 }
 
-.photo img{
-  width:200px;
-  height:220px;
-  object-fit:cover;
-  border:2px solid black;
-  border-radius:8px;
+/* PHOTO */
+
+.photo{
+  width:250px;
 }
+
+.photo img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border:3px solid #111;
+  border-radius:10px;
+  background:white;
+}
+
+/* DOWNLOAD BUTTON */
 
 .download{
   width:100%;
-  padding:15px;
+  padding:18px;
   background:#0b5b74;
   color:white;
   border:none;
+  font-size:22px;
   cursor:pointer;
-  font-size:18px;
+  border-radius:0;
 }
+
+/* STATUS */
+
+.status{
+  margin:15px;
+  font-size:18px;
+  color:#333;
+}
+
 </style>
 </head>
 
@@ -95,17 +142,26 @@ td:first-child{
 <input id="memberInput" placeholder="Enter Member ID">
 <button onclick="searchMember()">Search</button>
 
-<div id="card" class="id-card">
+<div class="status" id="status"></div>
 
+<!-- ================= ID CARD ================= -->
+
+<div class="id-card" id="card">
+
+  <!-- HEADER -->
   <div class="card-header">
     <h1>अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा</h1>
     <p>सदस्य पहचान पत्र</p>
   </div>
 
+  <!-- BODY -->
   <div class="container">
 
-    <div style="flex:2">
+    <!-- LEFT TABLE -->
+    <div class="left">
+
       <table>
+
         <tr><td>आईडी</td><td id="memberId"></td></tr>
         <tr><td>नाम</td><td id="fullName"></td></tr>
         <tr><td>पिता</td><td id="fatherName"></td></tr>
@@ -116,14 +172,19 @@ td:first-child{
         <tr><td>व्यवसाय</td><td id="profession"></td></tr>
         <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
         <tr><td>मोबाइल</td><td id="contact1"></td></tr>
+
       </table>
+
     </div>
 
+    <!-- PHOTO -->
     <div class="photo">
-      <img id="profilePhoto" crossorigin="anonymous">
+      <img id="profilePhoto">
+    </div>
 
   </div>
 
+  <!-- DOWNLOAD BUTTON -->
   <button class="download" onclick="downloadPDF()">
     Download PDF
   </button>
@@ -132,79 +193,172 @@ td:first-child{
 
 <script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
+/* ================= SEARCH MEMBER ================= */
 
-/* ================= SEARCH ================= */
 async function searchMember(){
 
   const id = document.getElementById("memberInput").value.trim();
-  if(!id){ alert("Enter ID"); return; }
 
-  document.getElementById("card").style.display="none";
+  if(!id){
+    alert("Enter Member ID");
+    return;
+  }
+
+  document.getElementById("status").innerText = "Loading...";
 
   try{
 
-    const res = await fetch(SCRIPT_URL + "?memberId=" + encodeURIComponent(id));
-    const text = await res.text();
+    const response = await fetch(
+      SCRIPT_URL + "?memberId=" + encodeURIComponent(id)
+    );
+
+    const text = await response.text();
+
+    console.log("RAW RESPONSE:", text);
 
     const result = JSON.parse(text);
 
     if(result.status !== "success"){
-      alert("Not found");
+
+      document.getElementById("status").innerText = "Member not found";
+
+      alert("Member not found");
+
       return;
     }
 
     const d = result.data;
+console.log("PHOTO URL FROM APPS SCRIPT:", d);
+    document.getElementById("card").style.display = "block";
 
-    document.getElementById("card").style.display="block";
+    document.getElementById("status").innerText = "Data Loaded";
 
-    document.getElementById("memberId").innerText = d.memberId || "";
-    document.getElementById("fullName").innerText = d.fullName || "";
-    document.getElementById("fatherName").innerText = d.fatherName || "";
-    document.getElementById("motherName").innerText = d.motherName || "";
-    document.getElementById("gotra").innerText = d.gotra || "";
-    document.getElementById("nativePlace").innerText = d.nativePlace || "";
-    document.getElementById("age").innerText = d.age || "";
-    document.getElementById("profession").innerText = d.profession || "";
-    document.getElementById("bloodGroup").innerText = d.bloodGroup || "";
-    document.getElementById("contact1").innerText = d.contact1 || "";
+    /* SET VALUES */
 
-    /* ================= FIX IMAGE ================= */
+    document.getElementById("memberId").innerText =
+      d.memberId || "";
+
+    document.getElementById("fullName").innerText =
+      d.fullName || "";
+
+    document.getElementById("fatherName").innerText =
+      d.fatherName || "";
+
+    document.getElementById("motherName").innerText =
+      d.motherName || "";
+
+    document.getElementById("gotra").innerText =
+      d.gotra || "";
+
+    document.getElementById("nativePlace").innerText =
+      d.nativePlace || "";
+
+    document.getElementById("age").innerText =
+      d.age || "";
+
+    document.getElementById("profession").innerText =
+      d.profession || "";
+
+    document.getElementById("bloodGroup").innerText =
+      d.bloodGroup || "";
+
+    document.getElementById("contact1").innerText =
+      d.contact1 || "";
+
+    /* ================= PHOTO ================= */
+
     const img = document.getElementById("profilePhoto");
-	console.log("PHOTO:", d);
-    if(d.photo && d.photo.includes("http")){
-	console.log("PHOTO:", d.photo);
-      img.src = "https://drive.google.com/thumbnail?id=1Ydq5bHjjMS63-GQpymWQmRHIWe5FsJTE";
-    } else {
-      img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
+    if(d.photo){
+
+      console.log("PHOTO URL FROM APPS SCRIPT:", d.photo);
+
+      let fileId = "";
+
+      const match = d.photo.match(/[-\w]{25,}/);
+
+      if(match){
+        fileId = match[0];
+      }
+
+      if(fileId){
+
+         img.src = "https://drive.google.com/file/d/" + fileId + "/view?usp=sharing";
+
+        console.log("FINAL PHOTO URL:", img.src);
+
+      }else{
+
+        img.src = d.photo;
+      }
+
+    }else{
+
+      console.log("NO PHOTO FOUND");
+
+      img.src =
+        "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
 
   }catch(err){
-    console.log(err);
-    alert("CORS / Server error");
+
+    console.error(err);
+
+    document.getElementById("status").innerText = "Error loading data";
+
+    alert("Network / Apps Script Error");
   }
 }
 
-/* ================= PDF ================= */
+/* ================= DOWNLOAD PDF ================= */
+
 async function downloadPDF(){
 
   const card = document.getElementById("card");
+
+  const images = card.getElementsByTagName("img");
+
+  for(let img of images){
+
+    if(!img.complete){
+
+      await new Promise(resolve => {
+
+        img.onload = resolve;
+        img.onerror = resolve;
+
+      });
+    }
+  }
 
   const canvas = await html2canvas(card,{
     scale:2,
     useCORS:true
   });
 
+  const imgData = canvas.toDataURL("image/png");
+
   const { jsPDF } = window.jspdf;
 
   const pdf = new jsPDF("p","mm","a4");
 
-  const width = 210;
-  const height = (canvas.height * width)/canvas.width;
+  const pageWidth = 210;
 
-  pdf.addImage(canvas.toDataURL("image/png"),"PNG",0,0,width,height);
+  const pageHeight =
+    (canvas.height * pageWidth) / canvas.width;
 
-  pdf.save("ID_Card.pdf");
+  pdf.addImage(
+    imgData,
+    "PNG",
+    0,
+    0,
+    pageWidth,
+    pageHeight
+  );
+
+  pdf.save("Samaj_ID_Card.pdf");
 }
 
 </script>
