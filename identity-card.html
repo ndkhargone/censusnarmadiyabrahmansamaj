@@ -10,10 +10,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-
 body{
   background:#e8e8e8;
-  padding:30px;
+  padding:20px;
   text-align:center;
   font-family:Arial;
 }
@@ -24,6 +23,7 @@ input{
   border-radius:8px;
   border:1px solid #ccc;
   font-size:16px;
+  max-width:90%;
 }
 
 button{
@@ -37,7 +37,6 @@ button{
 }
 
 /* ================= CARD ================= */
-
 .id-card{
   max-width:1100px;
   margin:auto;
@@ -50,48 +49,40 @@ button{
 }
 
 /* HEADER */
-
 .card-header{
   background:linear-gradient(135deg,#0d5d73,#2b8aa0,#5aa7b5);
   color:white;
   text-align:center;
-  padding:35px 20px;
+  padding:25px 15px;
 }
-
 .card-header h1{
-  font-size:34px;
-  margin-bottom:10px;
+  font-size:28px;
+  margin-bottom:8px;
 }
-
 .card-header p{
-  font-size:22px;
+  font-size:18px;
 }
 
 /* BODY */
-
 .container{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  padding:30px;
-  gap:30px;
+  padding:20px;
+  gap:20px;
 }
-
 .left{
   flex:2;
 }
-
 table{
   width:100%;
   border-collapse:collapse;
 }
-
 td{
   border:2px solid #111;
-  padding:10px;
-  font-size:20px;
+  padding:8px;
+  font-size:18px;
 }
-
 td:first-child{
   width:35%;
   font-weight:bold;
@@ -99,14 +90,15 @@ td:first-child{
 }
 
 /* PHOTO */
-
 .photo{
-  width:250px;
+  width:220px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
 .photo img{
   width:100%;
-  height:300px;
+  height:260px;
   object-fit:cover;
   border:3px solid #111;
   border-radius:10px;
@@ -114,26 +106,48 @@ td:first-child{
 }
 
 /* DOWNLOAD BUTTON */
-
 .download{
   width:100%;
-  padding:18px;
+  padding:14px;
   background:#0b5b74;
   color:white;
   border:none;
-  font-size:22px;
+  font-size:20px;
   cursor:pointer;
   border-radius:0;
 }
 
 /* STATUS */
-
 .status{
   margin:15px;
-  font-size:18px;
+  font-size:16px;
   color:#333;
 }
 
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .photo {
+    width: 180px;
+    margin-top: 15px;
+  }
+  .photo img {
+    height: 220px;
+  }
+  table td { font-size:16px; }
+  .card-header h1 { font-size:22px; }
+  .card-header p { font-size:16px; }
+}
+@media (max-width: 480px) {
+  table td { font-size:14px; }
+  .photo { width:130px; }
+  .photo img { height:160px; }
+  .card-header h1 { font-size:18px; }
+  .card-header p { font-size:14px; }
+}
 </style>
 </head>
 
@@ -145,9 +159,7 @@ td:first-child{
 <div class="status" id="status"></div>
 
 <!-- ================= ID CARD ================= -->
-
 <div class="id-card" id="card">
-
   <!-- HEADER -->
   <div class="card-header">
     <h1>अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा</h1>
@@ -156,12 +168,9 @@ td:first-child{
 
   <!-- BODY -->
   <div class="container">
-
     <!-- LEFT TABLE -->
     <div class="left">
-
       <table>
-
         <tr><td>आईडी</td><td id="memberId"></td></tr>
         <tr><td>नाम</td><td id="fullName"></td></tr>
         <tr><td>पिता</td><td id="fatherName"></td></tr>
@@ -172,193 +181,115 @@ td:first-child{
         <tr><td>व्यवसाय</td><td id="profession"></td></tr>
         <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
         <tr><td>मोबाइल</td><td id="contact1"></td></tr>
-		<tr><td>आधार नंबर</td><td id="aadhaarNumber"></td></tr>
+        <tr><td>आधार नंबर</td><td id="aadhaarNumber"></td></tr>
       </table>
-
     </div>
 
     <!-- PHOTO -->
     <div class="photo">
-      <img id="profilePhoto">
+      <img id="profilePhoto" alt="Member Photo">
     </div>
-
   </div>
 
   <!-- DOWNLOAD BUTTON -->
-  <button class="download" onclick="downloadPDF()">
-    Download PDF
-  </button>
-
+  <button class="download" onclick="downloadPDF()">Download PDF</button>
 </div>
 
 <script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
 /* ================= SEARCH MEMBER ================= */
-
 async function searchMember(){
-
   const id = document.getElementById("memberInput").value.trim();
-
-  if(!id){
-    alert("Enter Member ID");
-    return;
-  }
-
+  if(!id){ alert("Enter Member ID"); return; }
   document.getElementById("status").innerText = "Loading...";
 
   try{
-
-    const response = await fetch(
-      SCRIPT_URL + "?memberId=" + encodeURIComponent(id)
-    );
-
+    const response = await fetch(SCRIPT_URL + "?memberId=" + encodeURIComponent(id));
     const text = await response.text();
-
-    console.log("RAW RESPONSE:", text);
-
     const result = JSON.parse(text);
 
     if(result.status !== "success"){
-
       document.getElementById("status").innerText = "Member not found";
-
       alert("Member not found");
-
       return;
     }
 
     const d = result.data;
-console.log("PHOTO URL FROM APPS SCRIPT:", d);
     document.getElementById("card").style.display = "block";
-
     document.getElementById("status").innerText = "Data Loaded";
 
     /* SET VALUES */
+    document.getElementById("memberId").innerText = d.memberId || "";
+    document.getElementById("fullName").innerText = d.fullName || "";
+    document.getElementById("fatherName").innerText = d.fatherName || "";
+    document.getElementById("motherName").innerText = d.motherName || "";
+    document.getElementById("gotra").innerText = d.gotra || "";
+    document.getElementById("nativePlace").innerText = d.nativePlace || "";
+    document.getElementById("age").innerText = d.age || "";
+    document.getElementById("profession").innerText = d.profession || "";
+    document.getElementById("bloodGroup").innerText = d.bloodGroup || "";
+    document.getElementById("contact1").innerText = d.contact1 || "";
+    document.getElementById("aadhaarNumber").innerText = formatAadhaar(d.aadhaarNumber);
 
-    document.getElementById("memberId").innerText =
-      d.memberId || "";
-
-    document.getElementById("fullName").innerText =
-      d.fullName || "";
-
-    document.getElementById("fatherName").innerText =
-      d.fatherName || "";
-
-    document.getElementById("motherName").innerText =
-      d.motherName || "";
-
-    document.getElementById("gotra").innerText =
-      d.gotra || "";
-
-    document.getElementById("nativePlace").innerText =
-      d.nativePlace || "";
-
-    document.getElementById("age").innerText =
-      d.age || "";
-
-    document.getElementById("profession").innerText =
-      d.profession || "";
-
-    document.getElementById("bloodGroup").innerText =
-      d.bloodGroup || "";
-
-    document.getElementById("contact1").innerText =
-      d.contact1 || "";
-	  document.getElementById("aadhaarNumber").innerText =
-  d.aadhaarNumber || "";
-
-    /* ================= PHOTO ================= */
-
+    /* PHOTO */
     const img = document.getElementById("profilePhoto");
-
     if(d.photo){
-
-      console.log("PHOTO URL FROM APPS SCRIPT:", d.photo);
-
       let fileId = "";
-
       const match = d.photo.match(/[-\w]{25,}/);
-
-      if(match){
-        fileId = match[0];
-      }
-
+      if(match){ fileId = match[0]; }
       if(fileId){
-
-         img.src = "https://lh3.googleusercontent.com/d/" + fileId;
-  console.log("FINAL PHOTO URL:", img.src);
-
-      }else{
-
+        img.src = "https://lh3.googleusercontent.com/d/" + fileId;
+      } else {
         img.src = d.photo;
       }
-
-    }else{
-
-      console.log("NO PHOTO FOUND");
-
-      img.src =
-        "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+    } else {
+      img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
-
   }catch(err){
-
     console.error(err);
-
     document.getElementById("status").innerText = "Error loading data";
-
     alert("Network / Apps Script Error");
   }
 }
 
+/* Aadhaar formatting: ensure 12 digits */
+function formatAadhaar(num){
+  if(!num) return "";
+  let str = String(num).replace(/\D/g,"");
+  if(str.length === 12){
+    return str.replace(/(\d{4})(\d{4})(\d{4})/, "$1-$2-$3");
+  }
+  return str;
+}
+
 /* ================= DOWNLOAD PDF ================= */
-
 async function downloadPDF(){
-
   const card = document.getElementById("card");
-
   const images = card.getElementsByTagName("img");
-
   for(let img of images){
-
     if(!img.complete){
-
       await new Promise(resolve => {
-
         img.onload = resolve;
         img.onerror = resolve;
-
       });
     }
   }
-
-  const canvas = await html2canvas(card,{
-    scale:2,
-    useCORS:true
-  });
-
+ const canvas = await html2canvas(card,{ scale:2, useCORS:true });
   const imgData = canvas.toDataURL("image/png");
 
   const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF("p","mm","a4");   // ✅ fixed initializer
 
-  const pdf = new jsPDF("p","mm","a4");
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
 
-  const pageWidth = 210;
+  // Scale the card to fit the page
+  const ratio = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
+  const imgWidth = canvas.width * ratio;
+  const imgHeight = canvas.height * ratio;
 
-  const pageHeight =
-    (canvas.height * pageWidth) / canvas.width;
-
-  pdf.addImage(
-    imgData,
-    "PNG",
-    0,
-    0,
-    pageWidth,
-    pageHeight
-  );
-
+  pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
   pdf.save("Samaj_ID_Card.pdf");
 }
 
