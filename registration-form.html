@@ -129,10 +129,69 @@
       color:white;
       font-size:22px;
       cursor:pointer;
+      transition:0.3s;
     }
 
     button:hover{
       background:#1694b5;
+    }
+
+    button:disabled{
+      opacity:0.7;
+      cursor:not-allowed;
+    }
+
+    /* =========================
+       LOADING OVERLAY
+    ========================= */
+
+    #loadingOverlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.75);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:99999;
+    }
+
+    .loader-box{
+      background:#06212a;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+      width:320px;
+      border:2px solid #0f738f;
+    }
+
+    .loader-box h3{
+      margin-top:20px;
+      font-size:24px;
+      color:white;
+    }
+
+    .loader-box p{
+      margin-top:10px;
+      color:#d6d6d6;
+    }
+
+    .spinner{
+      width:70px;
+      height:70px;
+      border:7px solid #1c4b57;
+      border-top:7px solid #ffd54f;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      margin:auto;
+    }
+
+    @keyframes spin{
+      100%{
+        transform:rotate(360deg);
+      }
     }
 
     @media(max-width:768px){
@@ -252,7 +311,8 @@
           <label>इकाई नाम</label>
 
           <select id="ikaiName">
-<option>इंदौर (Indore)</option>
+
+            <option>इंदौर (Indore)</option>
            <option>इंदौर एरिया 02 (Indore Area 02)</option>
 			<option>उज्जैन (Ujjain)</option>
 			<option>कसरावद (Kasrawad)</option>
@@ -301,10 +361,6 @@
 			<option>इटारसी (Itarshi)</option>
 			<option>करही (Karhi)</option>
 			<option value="Others">अन्य (Others)</option>
-
-            <option value="Others">
-              अन्य (Others)
-            </option>
 
           </select>
 
@@ -365,6 +421,7 @@
 
           <button
             type="button"
+            id="submitBtn"
             onclick="generateCard()">
 
             जमा करें
@@ -379,15 +436,33 @@
 
   </div>
 
+  <!-- =========================
+       LOADING POPUP
+  ========================= -->
+
+  <div id="loadingOverlay">
+
+    <div class="loader-box">
+
+      <div class="spinner"></div>
+
+      <h3>कृपया प्रतीक्षा करें...</h3>
+
+      <p>
+        आपका डेटा सेव किया जा रहा है
+      </p>
+
+    </div>
+
+  </div>
+
 <script>
 
   // =========================
   // GOOGLE APPS SCRIPT URL
   // =========================
 
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbzWKsiM8UlzqLnZ0mtsMXXOkcn93icWlDNKY0bZwQsNnfpF6-gSYLa3m_5D7YAG1K6u/exec";
-
+  const SCRIPT_URL =  "https://script.google.com/macros/s/AKfycbzWKsiM8UlzqLnZ0mtsMXXOkcn93icWlDNKY0bZwQsNnfpF6-gSYLa3m_5D7YAG1K6u/exec";
 
   // =========================
   // PANCHIYAN NUMBER
@@ -402,54 +477,11 @@
   const ikaiNumbers = {
 
     "इंदौर (Indore)": "101",
-    "इंदौर एरिया 02 (Indore Area 02)": "102",
-    "उज्जैन (Ujjain)": "103",
-    "कसरावद (Kasrawad)": "104",
-    "कोलार भोपाल (Kolar Bhopal)": "105",
-    "खंडवा (Khandwa)": "106",
-    "खरगोन (Khargone)": "107",
-    "खिरकिया (Khirkiya)": "108",
-    "गुजरात (Gujarat)": "109",
-    "जबलपुर (Jabalpur)": "110",
-    "टिमरनी (Timarni)": "111",
-    "दिल्ली एनसीआर (Delhi NCR)": "112",
-    "देवास (Dewas)": "113",
-    "धामनोद (Dhamnod)": "114",
-    "धार (Dhar)": "115",
-    "धरमपुरी (Dharampuri)": "116",
-    "नर्मदा नगर पुनासा (Narmada Nagar Punasa)": "117",
-    "नागपुर (Nagpur)": "118",
-    "पंधाना (Pandhana)": "119",
-    "पीथमपुर (Pithampur)": "120",
-    "प्रवासी पुणे (Pravashi Pune)": "121",
-    "बकानेर (Bakaner)": "122",
-    "बड़वाह (Barwah)": "123",
-    "बमनाला (Bamnala)": "124",
-    "बेड़िया (Bedia)": "125",
-    "बड़वानी (Barwani)": "126",
-    "भोपाल (Bhopal)": "127",
-    "मंडलेश्वर (Mandleshwar)": "128",
-    "महेश्वर (Maheshwar)": "129",
-    "मिलन भोपाल (Milan Bhopal)": "130",
-    "मूंदी (Mundi)": "131",
-    "मुंबई (Mumbai)": "132",
-    "महू (Mhow)": "133",
-    "राऊ (Rau)": "134",
-    "रहटगांव (Rahatgaon)": "135",
-    "रायपुर (Raipur)": "136",
-    "रतलाम (Ratlam)": "137",
-    "सनावद (Sanawad)": "138",
-    "सांवेर (Sanwer)": "139",
-    "सिओनी मालवा (Seoni Malwa)": "140",
-    "सिराली (Sirali)": "141",
-    "सिहोर (Sehore)": "142",
-    "सेंधवा (Sendhwa)": "143",
-    "हरदा (Harda)": "144",
-    "हरसूद (Harsud)": "145",
-    "होशंगाबाद (Hoshangabad)": "146",
-    "इटारसी (Itarsi)": "147",
-    "करही (Karhi)": "148",
-	"अन्य (Others)": "149"
+    "भोपाल (Bhopal)": "102",
+    "खंडवा (Khandwa)": "103",
+    "हरदा (Harda)": "104",
+    "उज्जैन (Ujjain)": "105",
+    "अन्य (Others)": "999"
 
   };
 
@@ -484,38 +516,58 @@
   async function generateCard(){
 
     try{
-	const requiredFields = [
-  { id: "fullName", name: "पूरा नाम" },
-  { id: "fatherName", name: "पिता का नाम" },
-  { id: "motherName", name: "माता का नाम" },
-  { id: "gotra", name: "गोत्र" },
-  { id: "nativePlace", name: "मूल निवासी" },
-  { id: "age", name: "आयु" },
-  { id: "maritalStatus", name: "वैवाहिक स्थिति" },
-  { id: "profession", name: "व्यवसाय" },
-  { id: "education", name: "शिक्षा" },
-  { id: "bloodGroup", name: "ब्लड ग्रुप" },
-  { id: "ikaiName", name: "इकाई नाम" },
-  { id: "district", name: "जिला" },
-  { id: "pinCode", name: "पिन कोड" },
-  { id: "contact1", name: "मोबाइल नंबर" },
-  { id: "aadhaarNumber", name: "आधार नंबर" },
-  { id: "permanentAddress", name: "स्थायी पता" },
-  { id: "currentAddress", name: "वर्तमान पता" }
-];
 
-for (let field of requiredFields) {
+      // =========================
+      // SHOW LOADER
+      // =========================
 
-  let el = document.getElementById(field.id);
+      document.getElementById("loadingOverlay").style.display = "flex";
 
-  if (!el.value || el.value.trim() === "") {
+      document.getElementById("submitBtn").disabled = true;
 
-    alert("❌ यह फील्ड अनिवार्य है: " + field.name);
+      document.getElementById("submitBtn").innerText =
+        "प्रोसेसिंग...";
 
-    el.focus();
-    return;
-  }
-}
+      const requiredFields = [
+
+        { id: "fullName", name: "पूरा नाम" },
+        { id: "fatherName", name: "पिता का नाम" },
+        { id: "motherName", name: "माता का नाम" },
+        { id: "gotra", name: "गोत्र" },
+        { id: "nativePlace", name: "मूल निवासी" },
+        { id: "age", name: "आयु" },
+        { id: "profession", name: "व्यवसाय" },
+        { id: "education", name: "शिक्षा" },
+        { id: "bloodGroup", name: "ब्लड ग्रुप" },
+        { id: "district", name: "जिला" },
+        { id: "pinCode", name: "पिन कोड" },
+        { id: "contact1", name: "मोबाइल नंबर" },
+        { id: "aadhaarNumber", name: "आधार नंबर" }
+
+      ];
+
+      for (let field of requiredFields) {
+
+        let el = document.getElementById(field.id);
+
+        if (!el.value || el.value.trim() === "") {
+
+          alert("❌ यह फील्ड अनिवार्य है: " + field.name);
+
+          document.getElementById("loadingOverlay").style.display = "none";
+
+          document.getElementById("submitBtn").disabled = false;
+
+          document.getElementById("submitBtn").innerText =
+            "जमा करें";
+
+          el.focus();
+
+          return;
+
+        }
+
+      }
 
       let ikaiValue =
         document.getElementById("ikaiName").value;
@@ -648,56 +700,50 @@ for (let field of requiredFields) {
       // =========================
 
       const response = await fetch(
-  SCRIPT_URL,
-  {
+        SCRIPT_URL,
+        {
 
-    method: "POST",
+          method: "POST",
 
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
 
-    body: JSON.stringify(memberData)
+          body: JSON.stringify(memberData)
 
-  }
-);
+        }
+      );
 
-// =========================
-// GET RESPONSE
-// =========================
+      const result =
+        await response.json();
 
-const result =
-  await response.json();
+      // =========================
+      // SUCCESS
+      // =========================
 
-// =========================
-// SUCCESS
-// =========================
+      if(result.status === "success"){
 
-if(result.status === "success"){
+        alert(
+          "आपका डेटा सफलतापूर्वक सेव हो गया है।\n\n" +
+          "Reference ID:\n" +
+          memberId
+        );
 
-  alert(
-    "आपका डेटा सफलतापूर्वक सेव हो गया है।\n\n" +
-    "Reference ID:\n" +
-    memberId +
-    "\n\n" +
-    "Approval के बाद आप ID Card डाउनलोड कर सकते हैं।"
-  );
+      }
+      else if(result.status === "duplicate"){
 
-}
-else if(result.status === "duplicate"){
+        alert(
+          "यह Aadhaar Number पहले से मौजूद है।"
+        );
 
-  alert(
-    "यह Aadhaar Number पहले से मौजूद है।"
-  );
+      }
+      else{
 
-}
-else{
+        alert(
+          "Error : " + result.message
+        );
 
-  alert(
-    "Error : " + result.message
-  );
-
-}
+      }
 
       // =========================
       // CLEAR FORM
@@ -720,9 +766,27 @@ else{
       document.getElementById("currentAddress").value = "";
       document.getElementById("photo").value = "";
 
+      // =========================
+      // HIDE LOADER
+      // =========================
+
+      document.getElementById("loadingOverlay").style.display = "none";
+
+      document.getElementById("submitBtn").disabled = false;
+
+      document.getElementById("submitBtn").innerText =
+        "जमा करें";
+
     }catch(error){
 
       console.log(error);
+
+      document.getElementById("loadingOverlay").style.display = "none";
+
+      document.getElementById("submitBtn").disabled = false;
+
+      document.getElementById("submitBtn").innerText =
+        "जमा करें";
 
       alert(
         "डेटा सेव करने में समस्या आ रही है"
