@@ -120,9 +120,7 @@ td:first-child{
     </div>
 
     <div class="photo">
-      <img id="profilePhoto"
-           src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-    </div>
+      <img id="profilePhoto" crossorigin="anonymous">
 
   </div>
 
@@ -134,7 +132,7 @@ td:first-child{
 
 <script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzys__NmfEcakZK_g3DXragH0NCAJi6t8wNWkwKe_bA-DkxaVN58oUkKSXjs7yLyIJH/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxvjRgoouoLqZndnWXNve3QKTitlH49vwfpuIBHSaSORo9bbc6fdIF53iIadnCIcWeq/exec";
 
 /* ================= SEARCH ================= */
 async function searchMember(){
@@ -176,7 +174,7 @@ async function searchMember(){
 	console.log("PHOTO:", d);
     if(d.photo && d.photo.includes("http")){
 	console.log("PHOTO:", d.photo);
-      img.src = "https://drive.google.com/uc?export=view&id=1Ydq5bHjjMS63-GQpymWQmRHIWe5FsJTE";
+      img.src = "https://drive.google.com/thumbnail?id=1Ydq5bHjjMS63-GQpymWQmRHIWe5FsJTE";
     } else {
       img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
