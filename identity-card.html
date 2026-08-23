@@ -292,7 +292,19 @@ async function downloadPDF(){
   pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
   pdf.save("Samaj_ID_Card.pdf");
 }
+window.addEventListener("DOMContentLoaded", function(){
 
+    const params = new URLSearchParams(window.location.search);
+    const memberId = params.get("memberId");
+
+    if(memberId){
+
+        document.getElementById("memberInput").value = memberId;
+
+        searchMember();
+    }
+
+});
 </script>
 
 </body>

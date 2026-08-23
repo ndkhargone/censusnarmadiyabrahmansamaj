@@ -766,18 +766,16 @@
 
       if(result.status === "success"){
 
-        // Store ONLY the Member ID.
-        // The photo is Base64 and must not be stored in localStorage.
-        localStorage.setItem("registeredMemberId", memberId);
+    // Save only the small Member ID
+    localStorage.setItem("registeredMemberId", memberId);
 
-        // Directly open the ID Card
-        window.location.href =
-          "identity-card.html?memberId=" +
-          encodeURIComponent(memberId);
+    // Open ID Card automatically
+    window.location.href =
+        "identity-card.html?memberId=" +
+        encodeURIComponent(memberId);
 
-        return;
-
-      }
+    return;
+}
       else if(result.status === "duplicate"){
 
         alert(
