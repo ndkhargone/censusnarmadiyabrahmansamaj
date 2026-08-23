@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>समाज पहचान पत्र</title>
 
-  <!-- ✅ PDF LIBRARIES -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <title>समाज पंजीकरण फॉर्म</title>
 
   <style>
 
@@ -19,276 +18,828 @@
     }
 
     body{
-      background:#e8e8e8;
-      padding:30px;
-      text-align:center;
-    }
-
-    .search-box{
-      margin-bottom:20px;
-    }
-
-    input{
-      padding:12px;
-      width:300px;
-      border-radius:8px;
-      border:1px solid #ccc;
-    }
-
-    button{
-      padding:12px 20px;
-      border:none;
-      background:#0b5b74;
+      background:#02151c;
       color:white;
-      border-radius:8px;
-      cursor:pointer;
-      margin-left:10px;
     }
 
-    .id-card{
-      max-width:950px;
-      margin:auto;
-      background:white;
-      border:4px solid #222;
-      border-radius:15px;
-      overflow:hidden;
-      box-shadow:0 0 15px rgba(0,0,0,0.2);
-      display:none;
-    }
-
-    .top-header{
-      background:linear-gradient(135deg,#0b5b74,#1d8aa1);
-      color:white;
-      text-align:center;
-      padding:25px 15px;
-    }
-
-    .top-header h1{
-      font-size:34px;
-    }
-
-    .card-body{
-      display:flex;
-      gap:20px;
-      padding:20px;
-    }
-
-    .left-section{
-      flex:2;
-    }
-
-    .right-section{
-      width:230px;
-      text-align:center;
-    }
-
-    .photo-box img{
+    .main-header{
       width:100%;
-      height:220px;
-      object-fit:cover;
-      border:3px solid #222;
+      padding:70px 20px;
+      text-align:center;
+      background:linear-gradient(
+        135deg,
+        #0d5d73,
+        #2b8aa0,
+        #5aa7b5
+      );
+    }
+
+    .tagline{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,0.5);
+      padding:10px 25px;
+      border-radius:30px;
+      font-size:20px;
+      margin-bottom:25px;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .main-header h1{
+      font-size:48px;
+      margin-bottom:20px;
+      line-height:1.3;
+    }
+
+    .line{
+      width:120px;
+      height:5px;
+      background:#ffd54f;
+      margin:0 auto 20px;
       border-radius:10px;
     }
 
-    table{
-      width:100%;
-      border-collapse:collapse;
+    .main-header p{
+      font-size:28px;
     }
 
-    table td{
-      border:2px solid #222;
-      padding:8px;
-      font-size:15px;
-    }
-
-    table td:first-child{
-      width:40%;
-      font-weight:bold;
-      background:#f2f2f2;
-    }
-
-    .signature-section{
+    .wrapper{
+      padding:40px 20px;
       display:flex;
-      justify-content:flex-end;
-      margin:40px 20px;
+      justify-content:center;
     }
 
-    .signature-line{
-      border-top:2px solid black;
-      margin-top:60px;
-      padding-top:8px;
-      font-weight:bold;
-      width:220px;
-      text-align:center;
-    }
-
-    .download-btn{
+    .container{
       width:100%;
-      padding:16px;
-      border:none;
-      background:#0b5b74;
-      color:white;
-      font-size:20px;
-      cursor:pointer;
+      max-width:1200px;
+      background:#06212a;
+      border:1px solid #0f738f;
+      border-radius:20px;
+      padding:35px;
     }
 
-    .status{
-      margin:10px;
-      font-size:14px;
-      color:#333;
+    .container h2{
+      text-align:center;
+      margin-bottom:30px;
+      font-size:34px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+    }
+
+    .input-box{
+      display:flex;
+      flex-direction:column;
+    }
+
+    label{
+      margin-bottom:10px;
+      font-size:19px;
+      color:#d6d6d6;
+    }
+
+    input,
+    select,
+    textarea{
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      background:#0d3441;
+      color:white;
+      font-size:16px;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+    }
+
+    .full-width{
+      grid-column:span 2;
+    }
+
+    button{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:14px;
+      background:#0f738f;
+      color:white;
+      font-size:22px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#1694b5;
+    }
+
+    button:disabled{
+      opacity:0.7;
+      cursor:not-allowed;
+    }
+
+    /* =========================
+       LOADING OVERLAY
+    ========================= */
+
+    #loadingOverlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.75);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:99999;
+    }
+
+    .loader-box{
+      background:#06212a;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+      width:320px;
+      border:2px solid #0f738f;
+    }
+
+    .loader-box h3{
+      margin-top:20px;
+      font-size:24px;
+      color:white;
+    }
+
+    .loader-box p{
+      margin-top:10px;
+      color:#d6d6d6;
+    }
+
+    .spinner{
+      width:70px;
+      height:70px;
+      border:7px solid #1c4b57;
+      border-top:7px solid #ffd54f;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      margin:auto;
+    }
+
+    @keyframes spin{
+      100%{
+        transform:rotate(360deg);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .full-width{
+        grid-column:span 1;
+      }
+
+      .main-header h1{
+        font-size:30px;
+      }
+
+      .main-header p{
+        font-size:20px;
+      }
+
+      .container{
+        padding:20px;
+      }
+
     }
 
   </style>
+
 </head>
 
 <body>
 
-  <!-- SEARCH -->
-  <div class="search-box">
-    <input type="text" id="memberInput" placeholder="Enter Member ID">
-    <button onclick="searchMember()">Search</button>
+  <div class="main-header">
+
+    <div class="tagline">
+      ॥ नर्मदे हर ॥
+    </div>
+
+    <h1>
+      अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा
+    </h1>
+
+    <div class="line"></div>
+
+    <p>
+      सामाजिक जनगणना पोर्टल
+    </p>
+
   </div>
 
-  <div class="status" id="status"></div>
+  <div class="wrapper">
 
-  <!-- ID CARD -->
-  <div class="id-card" id="card">
+    <div class="container">
 
-    <div class="top-header">
-      <h1>अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा</h1>
-      <h3>समाज पहचान पत्र</h3>
-    </div>
+      <h2>समाज पंजीकरण फॉर्म</h2>
 
-    <div class="card-body">
+      <div class="form-grid">
 
-      <div class="left-section">
+        <div class="input-box">
+          <label>पूरा नाम</label>
+          <input type="text" id="fullName">
+        </div>
 
-        <table>
+        <div class="input-box">
+          <label>पिता का नाम</label>
+          <input type="text" id="fatherName">
+        </div>
 
-          <tr><td>सदस्य आईडी</td><td id="memberId"></td></tr>
-          <tr><td>पूरा नाम</td><td id="fullName"></td></tr>
-          <tr><td>पिता का नाम</td><td id="fatherName"></td></tr>
-          <tr><td>माता का नाम</td><td id="motherName"></td></tr>
-          <tr><td>गोत्र</td><td id="gotra"></td></tr>
-          <tr><td>मूल निवासी</td><td id="nativePlace"></td></tr>
-          <tr><td>आयु</td><td id="age"></td></tr>
-          <tr><td>व्यवसाय</td><td id="profession"></td></tr>
-          <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
-          <tr><td>इकाई नाम</td><td id="ikaiName"></td></tr>
-          <tr><td>मोबाइल नंबर</td><td id="contact1"></td></tr>
+        <div class="input-box">
+          <label>माता का नाम</label>
+          <input type="text" id="motherName">
+        </div>
 
-        </table>
+        <div class="input-box">
+          <label>गोत्र</label>
+          <input type="text" id="gotra">
+        </div>
+
+        <div class="input-box">
+          <label>मूल निवासी</label>
+          <input type="text" id="nativePlace">
+        </div>
+
+        <div class="input-box">
+          <label>आयु</label>
+          <input type="number" id="age">
+        </div>
+
+        <div class="input-box">
+
+          <label>वैवाहिक स्थिति</label>
+
+          <select id="maritalStatus">
+            <option>Married</option>
+            <option>Unmarried</option>
+          </select>
+
+        </div>
+
+        <div class="input-box">
+          <label>व्यवसाय</label>
+          <input type="text" id="profession">
+        </div>
+
+        <div class="input-box">
+          <label>शिक्षा</label>
+          <input type="text" id="education">
+        </div>
+
+        <div class="input-box">
+          <label>ब्लड ग्रुप</label>
+          <input type="text" id="bloodGroup">
+        </div>
+
+        <div class="input-box">
+
+          <label>इकाई नाम</label>
+
+          <select id="ikaiName">
+
+            <option>इंदौर (Indore)</option>
+           <option>इंदौर एरिया 02 (Indore Area 02)</option>
+			<option>उज्जैन (Ujjain)</option>
+			<option>कसरावद (Kasrawad)</option>
+			<option>कोलार भोपाल (Kolar Bhopal)</option>
+			<option>खंडवा (Khandwa)</option>
+			<option>खरगोन (Khargone)</option>
+			<option>खिरकिया (Khirkiya)</option>
+			<option>गुजरात (Gujarat)</option>
+			<option>जबलपुर (Jabalpur)</option>
+			<option>टिमरनी (Timarni)</option>
+			<option>दिल्ली एनसीआर (Delhi NCR)</option>
+			<option>देवास (Dewas)</option>
+			<option>धामनोद (Dhamnod)</option>
+			<option>धार (Dhar)</option>
+			<option>धरमपुरी (Dharampuri)</option>
+			<option>नर्मदा नगर पुनासा (Narmada Nagar Punasa)</option>
+			<option>नागपुर (Nagpur)</option>
+			<option>पंधाना (Pandhana)</option>
+			<option>पीथमपुर (Pithampur)</option>
+			<option>प्रवासी पुणे (Pravashi Pune)</option>
+			<option>बकानेर (Bakaner)</option>
+			<option>बड़वाह (Barwah)</option>
+			<option>बमनाला (Bamnala)</option>
+			<option>बेड़िया (Bedia)</option>
+			<option>बड़वानी (Barwani)</option>
+			<option>भोपाल (Bhopal)</option>
+			<option>मंडलेश्वर (Mandleshwar)</option>
+			<option>महेश्वर (Maheshwar)</option>
+			<option>मिलन भोपाल (Milan Bhopal)</option>
+			<option>मूंदी (Mundi)</option>
+			<option>मुंबई (Mumbai)</option>
+			<option>महू (Mhow)</option>
+			<option>राऊ (Rau)</option>
+			<option>रहटगांव (Rahatgaon)</option>
+			<option>रायपुर (Raipur)</option>
+			<option>रतलाम (Ratlam)</option>
+			<option>सनावद (Sanawad)</option>
+			<option>सांवेर (Sanwer)</option>
+			<option>सिओनी मालवा (Seoni Malwa)</option>
+			<option>सिराली (Sirali)</option>
+			<option>सिहोर (Sehore)</option>
+			<option>सेंधवा (Sendhwa)</option>
+			<option>हरदा (Harda)</option>
+			<option>हरसूद (Harsud)</option>
+			<option>होशंगाबाद (Hoshangabad)</option>
+			<option>इटारसी (Itarshi)</option>
+			<option>करही (Karhi)</option>
+			<option value="Others">अन्य (Others)</option>
+
+          </select>
+
+        </div>
+
+        <div class="input-box"
+             id="otherCityBox"
+             style="display:none;">
+
+          <label>
+            अन्य शहर / इकाई का नाम
+          </label>
+
+          <input
+            type="text"
+            id="otherCity"
+            placeholder="शहर / इकाई का नाम लिखें"
+          >
+
+        </div>
+
+        <div class="input-box">
+          <label>जिला</label>
+          <input type="text" id="district">
+        </div>
+
+        <div class="input-box">
+          <label>पिन कोड</label>
+          <input type="text" id="pinCode">
+        </div>
+
+        <div class="input-box">
+          <label>मोबाइल नंबर</label>
+          <input type="text" id="contact1">
+        </div>
+
+        <div class="input-box">
+          <label>आधार कार्ड नंबर</label>
+          <input type="text" id="aadhaarNumber">
+        </div>
+
+        <div class="input-box">
+          <label>फोटो अपलोड करें</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+
+        <div class="input-box full-width">
+          <label>स्थायी पता</label>
+          <textarea rows="4" id="permanentAddress"></textarea>
+        </div>
+
+        <div class="input-box full-width">
+          <label>वर्तमान पता</label>
+          <textarea rows="4" id="currentAddress"></textarea>
+        </div>
+
+        <div class="input-box full-width">
+
+          <button
+            type="button"
+            id="submitBtn"
+            onclick="generateCard()">
+
+            जमा करें
+
+          </button>
+
+        </div>
 
       </div>
 
-      <div class="right-section">
-        <img id="profilePhoto"
-             src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-      </div>
-
     </div>
 
-    <div class="signature-section">
-      <div class="signature-line">महासभा अध्यक्ष</div>
-    </div>
+  </div>
 
-    <!-- ✅ PDF DOWNLOAD -->
-    <button class="download-btn" onclick="downloadPDF()">
-      डाउनलोड PDF करें
-    </button>
+  <!-- =========================
+       LOADING POPUP
+  ========================= -->
+
+  <div id="loadingOverlay">
+
+    <div class="loader-box">
+
+      <div class="spinner"></div>
+
+      <h3>कृपया प्रतीक्षा करें...</h3>
+
+      <p>
+        आपका डेटा सेव किया जा रहा है
+      </p>
+
+    </div>
 
   </div>
 
 <script>
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwXyawWnn30K7_Q-AfgncstIA3NisH9HsdFTHlDcqFBcexdOo9FjzzQuGa10pR7rK2u/exec";
+  // =========================
+  // GOOGLE APPS SCRIPT URL
+  // =========================
 
-async function searchMember() {
+  const SCRIPT_URL =  "https://script.google.com/macros/s/AKfycbx_U1PjsD2LdIVbc9QZ0Xc-asbaJts57qAH0Z129Zr7FL0hs3QTRMhCCT0X0djt7n4/exec";
 
-  try {
+  // =========================
+  // PANCHIYAN NUMBER
+  // =========================
 
-    const id = document.getElementById("memberInput").value.trim();
+  const PANCHIYAN_NUMBER = "45397";
 
-    if (!id) {
-      alert("Enter Member ID");
-      return;
+  // =========================
+  // IKAI NUMBER
+  // =========================
+
+  const ikaiNumbers = {
+
+    "इंदौर (Indore)": "IND",
+  "इंदौर एरिया 02 (Indore Area 02)": "IND2",
+  "उज्जैन (Ujjain)": "UJJ",
+  "कसरावद (Kasrawad)": "KAS",
+  "कोलार भोपाल (Kolar Bhopal)": "KOL",
+  "खंडवा (Khandwa)": "KND",
+  "खरगोन (Khargone)": "KHG",
+  "खिरकिया (Khirkiya)": "KHI",
+  "गुजरात (Gujarat)": "GUJ",
+  "जबलपुर (Jabalpur)": "JAB",
+  "टिमरनी (Timarni)": "TIM",
+  "दिल्ली एनसीआर (Delhi NCR)": "DEL",
+  "देवास (Dewas)": "DEV",
+  "धामनोद (Dhamnod)": "DHN",
+  "धार (Dhar)": "DHR",
+  "धरमपुरी (Dharampuri)": "DHP",
+  "नर्मदा नगर पुनासा (Narmada Nagar Punasa)": "NRP",
+  "नागपुर (Nagpur)": "NAG",
+  "पंधाना (Pandhana)": "PAN",
+  "पीथमपुर (Pithampur)": "PIT",
+  "प्रवासी पुणे (Pravashi Pune)": "PRP",
+  "बकानेर (Bakaner)": "BAK",
+  "बड़वाह (Barwah)": "BRW",
+  "बमनाला (Bamnala)": "BAM",
+  "बेड़िया (Bedia)": "BED",
+  "बड़वानी (Barwani)": "BRN",
+  "भोपाल (Bhopal)": "BHO",
+  "मंडलेश्वर (Mandleshwar)": "MAN",
+  "महेश्वर (Maheshwar)": "MAH",
+  "मिलन भोपाल (Milan Bhopal)": "MLB",
+  "मूंदी (Mundi)": "MUN",
+  "मुंबई (Mumbai)": "MUM",
+  "महू (Mhow)": "MHO",
+  "राऊ (Rau)": "RAU",
+  "रहटगांव (Rahatgaon)": "RHT",
+  "रायपुर (Raipur)": "RAI",
+  "रतलाम (Ratlam)": "RAT",
+  "सनावद (Sanawad)": "SNW",
+  "सांवेर (Sanwer)": "SNR",
+  "सिओनी मालवा (Seoni Malwa)": "SEM",
+  "सिराली (Sirali)": "SIR",
+  "सिहोर (Sehore)": "SEH",
+  "सेंधवा (Sendhwa)": "SDW",
+  "हरदा (Harda)": "HRD",
+  "हरसूद (Harsud)": "HRS",
+  "होशंगाबाद (Hoshangabad)": "HOS",
+  "इटारसी (Itarsi)": "ITA",
+  "करही (Karhi)": "KAR",
+  "अन्य (Others)": "OTH"
+
+  };
+
+  // =========================
+  // OTHER CITY SHOW
+  // =========================
+
+  document.getElementById("ikaiName")
+    .addEventListener("change", function(){
+
+      let selectedValue = this.value;
+
+      let otherCityBox =
+        document.getElementById("otherCityBox");
+
+      if(selectedValue === "Others"){
+
+        otherCityBox.style.display = "flex";
+
+      }else{
+
+        otherCityBox.style.display = "none";
+
+      }
+
+    });
+
+  // =========================
+  // GENERATE CARD
+  // =========================
+
+  async function generateCard(){
+
+    try{
+
+      // =========================
+      // SHOW LOADER
+      // =========================
+
+      document.getElementById("loadingOverlay").style.display = "flex";
+
+      document.getElementById("submitBtn").disabled = true;
+
+      document.getElementById("submitBtn").innerText =
+        "प्रोसेसिंग...";
+
+      const requiredFields = [
+
+        { id: "fullName", name: "पूरा नाम" },
+        { id: "fatherName", name: "पिता का नाम" },
+        { id: "motherName", name: "माता का नाम" },
+        { id: "gotra", name: "गोत्र" },
+        { id: "nativePlace", name: "मूल निवासी" },
+        { id: "age", name: "आयु" },
+        { id: "profession", name: "व्यवसाय" },
+        { id: "education", name: "शिक्षा" },
+        { id: "bloodGroup", name: "ब्लड ग्रुप" },
+        { id: "district", name: "जिला" },
+        { id: "pinCode", name: "पिन कोड" },
+        { id: "contact1", name: "मोबाइल नंबर" },
+        { id: "aadhaarNumber", name: "आधार नंबर" }
+
+      ];
+
+      for (let field of requiredFields) {
+
+        let el = document.getElementById(field.id);
+
+        if (!el.value || el.value.trim() === "") {
+
+          alert("❌ यह फील्ड अनिवार्य है: " + field.name);
+
+          document.getElementById("loadingOverlay").style.display = "none";
+
+          document.getElementById("submitBtn").disabled = false;
+
+          document.getElementById("submitBtn").innerText =
+            "जमा करें";
+
+          el.focus();
+
+          return;
+
+        }
+
+      }
+
+      let ikaiValue =
+        document.getElementById("ikaiName").value;
+
+      if(ikaiValue === "Others"){
+
+        ikaiValue =
+          document.getElementById("otherCity").value;
+
+      }
+
+      let ikaiNumber =
+        ikaiNumbers[ikaiValue] || "999";
+
+      // =========================
+      // PHOTO BASE64
+      // =========================
+
+      let photoBase64 = "";
+
+      const file =
+        document.getElementById("photo").files[0];
+
+      if(file){
+
+        photoBase64 =
+          await convertToBase64(file);
+
+      }
+
+      // =========================
+      // DATA OBJECT
+      // =========================
+
+      let memberData = {
+
+        ikaiCode:
+          ikaiNumber,
+
+        fullName:
+          document.getElementById("fullName").value,
+
+        fatherName:
+          document.getElementById("fatherName").value,
+
+        motherName:
+          document.getElementById("motherName").value,
+
+        gotra:
+          document.getElementById("gotra").value,
+
+        nativePlace:
+          document.getElementById("nativePlace").value,
+
+        age:
+          document.getElementById("age").value,
+
+        maritalStatus:
+          document.getElementById("maritalStatus").value,
+
+        profession:
+          document.getElementById("profession").value,
+
+        education:
+          document.getElementById("education").value,
+
+        bloodGroup:
+          document.getElementById("bloodGroup").value,
+
+        ikaiName:
+          ikaiValue,
+
+        district:
+          document.getElementById("district").value,
+
+        pinCode:
+          document.getElementById("pinCode").value,
+
+        contact1:
+          document.getElementById("contact1").value,
+
+        aadhaarNumber:
+          document.getElementById("aadhaarNumber").value,
+
+        permanentAddress:
+          document.getElementById("permanentAddress").value,
+
+        currentAddress:
+          document.getElementById("currentAddress").value,
+
+        photo:
+          photoBase64
+
+      };
+
+      // =========================
+      // SAVE TO GOOGLE SHEET
+      // =========================
+
+      const response = await fetch(
+        SCRIPT_URL,
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+
+          body: JSON.stringify(memberData)
+
+        }
+      );
+
+      const result =
+        await response.json();
+
+      // =========================
+      // SUCCESS
+      // =========================
+
+      if(result.status === "success"){
+
+        const memberId = result.memberId;
+
+        document.getElementById("loadingOverlay").querySelector("h3").innerText =
+          "पंजीकरण सफल!";
+        document.getElementById("loadingOverlay").querySelector("p").innerText =
+          "ID Card तैयार किया जा रहा है...";
+
+        // Small buffer so the sheet write is fully committed before the
+        // ID card page tries to read it back (avoids a race condition).
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // Go straight to the ID card view for this member
+        window.location.href =
+          "identity-card.html?memberId=" + encodeURIComponent(memberId);
+
+        return;
+
+      }
+      else if(result.status === "duplicate"){
+
+        alert(
+          "यह Aadhaar Number पहले से मौजूद है।"
+        );
+
+      }
+      else{
+
+        alert(
+          "Error : " + result.message
+        );
+
+      }
+
+      // =========================
+      // CLEAR FORM
+      // =========================
+
+      document.getElementById("fullName").value = "";
+      document.getElementById("fatherName").value = "";
+      document.getElementById("motherName").value = "";
+      document.getElementById("gotra").value = "";
+      document.getElementById("nativePlace").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("profession").value = "";
+      document.getElementById("education").value = "";
+      document.getElementById("bloodGroup").value = "";
+      document.getElementById("district").value = "";
+      document.getElementById("pinCode").value = "";
+      document.getElementById("contact1").value = "";
+      document.getElementById("aadhaarNumber").value = "";
+      document.getElementById("permanentAddress").value = "";
+      document.getElementById("currentAddress").value = "";
+      document.getElementById("photo").value = "";
+
+      // =========================
+      // HIDE LOADER
+      // =========================
+
+      document.getElementById("loadingOverlay").style.display = "none";
+
+      document.getElementById("submitBtn").disabled = false;
+
+      document.getElementById("submitBtn").innerText =
+        "जमा करें";
+
+    }catch(error){
+
+      console.log(error);
+
+      document.getElementById("loadingOverlay").style.display = "none";
+
+      document.getElementById("submitBtn").disabled = false;
+
+      document.getElementById("submitBtn").innerText =
+        "जमा करें";
+
+      alert(
+        "डेटा सेव करने में समस्या आ रही है"
+      );
+
     }
 
-    document.getElementById("status").innerText = "🔍 Searching...";
-    document.getElementById("card").style.display = "none";
-
-    const response = await fetch(
-      SCRIPT_URL + "?memberId=" + encodeURIComponent(id)
-    );
-
-    const result = await response.json();
-
-    if (result.status !== "success") {
-      document.getElementById("status").innerText = "❌ Member not found";
-      alert("❌ Member not found");
-      return;
-    }
-
-    const data = result.data;
-
-    document.getElementById("card").style.display = "block";
-    document.getElementById("status").innerText = "✅ Data loaded";
-
-    document.getElementById("memberId").innerText = data.memberId || "-";
-    document.getElementById("fullName").innerText = data.fullName || "-";
-    document.getElementById("fatherName").innerText = data.fatherName || "-";
-    document.getElementById("motherName").innerText = data.motherName || "-";
-    document.getElementById("gotra").innerText = data.gotra || "-";
-    document.getElementById("nativePlace").innerText = data.nativePlace || "-";
-    document.getElementById("age").innerText = data.age || "-";
-    document.getElementById("profession").innerText = data.profession || "-";
-    document.getElementById("bloodGroup").innerText = data.bloodGroup || "-";
-    document.getElementById("ikaiName").innerText = data.ikaiName || "-";
-    document.getElementById("contact1").innerText = data.contact1 || "-";
-
-    // PHOTO HANDLING
-    const img = document.getElementById("profilePhoto");
-
-    if (data.photo && data.photo.includes("http")) {
-      img.src = data.photo;
-    } else {
-      img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-    }
-
-  } catch (err) {
-    console.error(err);
-    alert("❌ Server error");
   }
-}
 
-async function downloadPDF() {
+  // =========================
+  // CONVERT IMAGE
+  // =========================
 
-  const { jsPDF } = window.jspdf;
+  function convertToBase64(file){
 
-  const card = document.getElementById("card");
+    return new Promise((resolve, reject) => {
 
-  if (!card || card.style.display === "none") {
-    alert("❌ पहले ID कार्ड लोड करें");
-    return;
+      const reader =
+        new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = () =>
+        resolve(reader.result);
+
+      reader.onerror = error =>
+        reject(error);
+
+    });
+
   }
-
-  const canvas = await html2canvas(card, {
-    scale: 2,
-    useCORS: true
-  });
-
-  const imgData = canvas.toDataURL("image/png");
-
-  const pdf = new jsPDF("p", "mm", "a4");
-
-  const pageWidth = 210;
-  const imgHeight = (canvas.height * pageWidth) / canvas.width;
-
-  pdf.addImage(imgData, "PNG", 0, 0, pageWidth, imgHeight);
-
-  pdf.save("Samaj_ID_Card.pdf");
-}
 
 </script>
 
