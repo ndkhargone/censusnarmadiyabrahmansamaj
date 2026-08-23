@@ -764,15 +764,21 @@
       // SUCCESS
       // =========================
 
-      if(result.status === "success"){
+if(result.status === "success"){
 
-        alert(
-          "आपका डेटा सफलतापूर्वक सेव हो गया है।\n\n" +
-          "Reference ID:\n" +
-          memberId
-        );
+    // Save member data for the ID card
+    localStorage.setItem(
+        "memberData",
+        JSON.stringify(memberData)
+    );
 
-      }
+    // Directly open View Card
+    window.location.href =
+        "identity-card.html?memberId=" +
+        encodeURIComponent(memberId);
+
+    return;
+}
       else if(result.status === "duplicate"){
 
         alert(
