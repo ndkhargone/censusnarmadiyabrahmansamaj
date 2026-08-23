@@ -103,13 +103,21 @@
     input,
     select,
     textarea{
+      width:100%;
+      max-width:100%;
       padding:15px;
-      border:none;
+      border:1px solid #163a47;
       border-radius:12px;
       background:#0d3441;
       color:white;
       font-size:16px;
       outline:none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:#1aa6c2;
     }
 
     textarea{
@@ -196,6 +204,10 @@
 
     @media(max-width:768px){
 
+      .wrapper{
+        padding:24px 12px;
+      }
+
       .form-grid{
         grid-template-columns:1fr;
       }
@@ -204,16 +216,43 @@
         grid-column:span 1;
       }
 
+      .main-header{
+        padding:50px 15px;
+      }
+
       .main-header h1{
-        font-size:30px;
+        font-size:26px;
       }
 
       .main-header p{
-        font-size:20px;
+        font-size:18px;
       }
 
       .container{
         padding:20px;
+      }
+
+    }
+
+    @media(max-width:420px){
+
+      .wrapper{
+        padding:16px 8px;
+      }
+
+      .container{
+        padding:15px;
+      }
+
+      .main-header h1{
+        font-size:21px;
+      }
+
+      input,
+      select,
+      textarea{
+        padding:12px;
+        font-size:15px;
       }
 
     }

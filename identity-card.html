@@ -10,11 +10,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   background:#e8e8e8;
   padding:20px;
   text-align:center;
   font-family:Arial;
+}
+
+/* ================= SEARCH BOX ================= */
+#searchBox{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:10px;
 }
 
 input{
@@ -48,31 +61,52 @@ button{
   margin-top:20px;
 }
 
-/* HEADER */
+/* HEADER — title on the left, photo pinned to the right corner
+   at every screen size */
 .card-header{
   background:linear-gradient(135deg,#0d5d73,#2b8aa0,#5aa7b5);
   color:white;
   text-align:center;
-  padding:25px 15px;
+  padding:22px 20px;
 }
+
 .card-header h1{
-  font-size:28px;
-  margin-bottom:8px;
+  font-size:24px;
+  margin-bottom:6px;
+  line-height:1.3;
 }
 .card-header p{
-  font-size:18px;
+  font-size:16px;
+}
+
+/* PHOTO — sits beside the table, always on the right, never
+   drops below it even on narrow screens (flex-wrap: nowrap on
+   .container is what prevents the stacking) */
+.photo{
+  flex-shrink:0;
+  width:140px;
+}
+.photo img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border:3px solid #111;
+  border-radius:10px;
+  background:white;
+  display:block;
 }
 
 /* BODY */
 .container{
   display:flex;
-  justify-content:space-between;
+  flex-wrap:nowrap;
   align-items:flex-start;
+  gap:15px;
   padding:20px;
-  gap:20px;
 }
 .left{
-  flex:2;
+  flex:1;
+  min-width:0;
 }
 table{
   width:100%;
@@ -82,27 +116,12 @@ td{
   border:2px solid #111;
   padding:8px;
   font-size:18px;
+  text-align:left;
 }
 td:first-child{
   width:35%;
   font-weight:bold;
   background:#f2f2f2;
-}
-
-/* PHOTO */
-.photo{
-  width:220px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.photo img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border:3px solid #111;
-  border-radius:10px;
-  background:white;
 }
 
 /* DOWNLOAD BUTTON */
@@ -126,35 +145,49 @@ td:first-child{
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
+  .card-header{
+    padding:16px 15px;
   }
-  .photo {
-    width: 180px;
-    margin-top: 15px;
+  .container{
+    gap:10px;
+    padding:14px;
   }
-  .photo img {
-    height: 220px;
+  .photo{
+    width:95px;
   }
-  table td { font-size:16px; }
-  .card-header h1 { font-size:22px; }
-  .card-header p { font-size:16px; }
+  .photo img{
+    height:115px;
+  }
+  table td { font-size:15px; padding:6px; }
+  .card-header h1 { font-size:19px; margin-bottom:4px; }
+  .card-header p { font-size:14px; }
+  input{ width:100%; }
 }
 @media (max-width: 480px) {
-  table td { font-size:14px; }
-  .photo { width:130px; }
-  .photo img { height:160px; }
-  .card-header h1 { font-size:18px; }
-  .card-header p { font-size:14px; }
+  .container{
+    gap:6px;
+    padding:10px;
+  }
+  .photo{
+    width:70px;
+  }
+  .photo img{
+    height:85px;
+    border-width:2px;
+  }
+  table td { font-size:12px; padding:4px; }
+  .card-header h1 { font-size:16px; }
+  .card-header p { font-size:12px; }
 }
 </style>
 </head>
 
 <body>
 
-<input id="memberInput" placeholder="Enter Member ID">
-<button onclick="searchMember()">Search</button>
+<div id="searchBox">
+  <input id="memberInput" placeholder="Enter Member ID">
+  <button onclick="searchMember()">Search</button>
+</div>
 
 <div class="status" id="status"></div>
 
@@ -166,9 +199,8 @@ td:first-child{
     <p>सदस्य पहचान पत्र</p>
   </div>
 
-  <!-- BODY -->
+  <!-- BODY (table on the left, photo on the right, side by side) -->
   <div class="container">
-    <!-- LEFT TABLE -->
     <div class="left">
       <table>
         <tr><td>आईडी</td><td id="memberId"></td></tr>
@@ -177,15 +209,14 @@ td:first-child{
         <tr><td>माता</td><td id="motherName"></td></tr>
         <tr><td>गोत्र</td><td id="gotra"></td></tr>
         <tr><td>शहर</td><td id="nativePlace"></td></tr>
-        <tr><td>आयु</td><td id="age"></td></tr>
-        <tr><td>व्यवसाय</td><td id="profession"></td></tr>
-        <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
-        <tr><td>मोबाइल</td><td id="contact1"></td></tr>
-        <tr><td>आधार नंबर</td><td id="aadhaarNumber"></td></tr>
+      <tr><td>आयु</td><td id="age"></td></tr>
+      <tr><td>व्यवसाय</td><td id="profession"></td></tr>
+      <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
+      <tr><td>मोबाइल</td><td id="contact1"></td></tr>
+      <tr><td>आधार नंबर</td><td id="aadhaarNumber"></td></tr>
       </table>
     </div>
 
-    <!-- PHOTO -->
     <div class="photo">
       <img id="profilePhoto" alt="Member Photo">
     </div>
@@ -197,6 +228,12 @@ td:first-child{
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
+
+/* ================= SHOW / HIDE SEARCH UI ================= */
+function showCardUI(){
+  document.getElementById("card").style.display = "block";
+  document.getElementById("searchBox").style.display = "none";
+}
 
 /* ================= SEARCH MEMBER ================= */
 async function searchMember(silent = false){
@@ -218,8 +255,8 @@ async function searchMember(silent = false){
     }
 
     const d = result.data;
-    document.getElementById("card").style.display = "block";
-    document.getElementById("status").innerText = "Data Loaded";
+    showCardUI();
+    document.getElementById("status").innerText = "";
 
     /* SET VALUES */
     document.getElementById("memberId").innerText = d.memberId || "";
