@@ -199,10 +199,10 @@ td:first-child{
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzuNAnPCskNUWVVFw9ZGUZuMhEFtLPV_hF1DNKE-xjgr1EScyPzUKgarRSqfcsfvv9/exec";
 
 /* ================= SEARCH MEMBER ================= */
-async function searchMember(silent = false){
+async function searchMember(){
   const id = document.getElementById("memberInput").value.trim();
-  if(!id){ if(!silent) alert("Enter Member ID"); return false; }
-  if(!silent) document.getElementById("status").innerText = "Loading...";
+  if(!id){ alert("Enter Member ID"); return; }
+  document.getElementById("status").innerText = "Loading...";
 
   try{
     const response = await fetch(SCRIPT_URL + "?memberId=" + encodeURIComponent(id));
@@ -210,11 +210,9 @@ async function searchMember(silent = false){
     const result = JSON.parse(text);
 
     if(result.status !== "success"){
-      if(!silent){
-        document.getElementById("status").innerText = "Member not found";
-        alert("Member not found");
-      }
-      return false;
+      document.getElementById("status").innerText = "Member not found";
+      alert("Member not found");
+      return;
     }
 
     const d = result.data;
@@ -248,15 +246,10 @@ async function searchMember(silent = false){
     } else {
       img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
-
-    return true;
   }catch(err){
     console.error(err);
-    if(!silent){
-      document.getElementById("status").innerText = "Error loading data";
-      alert("Network / Apps Script Error");
-    }
-    return false;
+    document.getElementById("status").innerText = "Error loading data";
+    alert("Network / Apps Script Error");
   }
 }
 
@@ -299,43 +292,7 @@ async function downloadPDF(){
   pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
   pdf.save("Samaj_ID_Card.pdf");
 }
-window.addEventListener("DOMContentLoaded", async function(){
 
-    const params = new URLSearchParams(window.location.search);
-    const memberId = params.get("memberId");
-
-    if(memberId){
-
-        document.getElementById("memberInput").value = memberId;
-
-        // A member coming straight from registration may not be
-        // readable from the sheet on the very first attempt, so retry
-        // a few times before showing "not found" to the user.
-        const maxAttempts = 6;
-        const delayMs = 1500;
-        let found = false;
-
-        for(let attempt = 1; attempt <= maxAttempts; attempt++){
-
-            document.getElementById("status").innerText =
-                "डेटा लोड हो रहा है... (" + attempt + "/" + maxAttempts + ")";
-
-            found = await searchMember(true); // silent: no alert on a miss
-
-            if(found) break;
-
-            if(attempt < maxAttempts){
-                await new Promise(resolve => setTimeout(resolve, delayMs));
-            }
-        }
-
-        if(!found){
-            document.getElementById("status").innerText =
-                "Member ID अभी नहीं मिला — कृपया कुछ सेकंड बाद ऊपर 'Search' बटन दबाएँ।";
-        }
-    }
-
-});
 </script>
 
 </body>
