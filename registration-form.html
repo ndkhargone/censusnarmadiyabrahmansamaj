@@ -769,6 +769,14 @@
     // Save only the small Member ID
     localStorage.setItem("registeredMemberId", memberId);
 
+    // Let the user know we're about to hop over to the ID card
+    document.querySelector("#loadingOverlay h3").innerText = "पंजीकरण सफल!";
+    document.querySelector("#loadingOverlay p").innerText = "ID Card तैयार किया जा रहा है...";
+
+    // Small buffer so the sheet write is fully committed before the
+    // ID card page tries to read it back (avoids a race condition).
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
     // Open ID Card automatically
     window.location.href =
         "identity-card.html?memberId=" +
