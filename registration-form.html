@@ -825,20 +825,20 @@
 
     }catch(error){
 
-      console.log(error);
+  console.error("REGISTRATION ERROR:", error);
 
-      document.getElementById("loadingOverlay").style.display = "none";
+  document.getElementById("loadingOverlay").style.display = "none";
 
-      document.getElementById("submitBtn").disabled = false;
+  document.getElementById("submitBtn").disabled = false;
 
-      document.getElementById("submitBtn").innerText =
-        "जमा करें";
+  document.getElementById("submitBtn").innerText =
+    "जमा करें";
 
-      alert(
-        "डेटा सेव करने में समस्या आ रही है"
-      );
+  alert(
+    "Error: " + error.message
+  );
 
-    }
+}
 
   }
 
