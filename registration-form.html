@@ -764,21 +764,20 @@
       // SUCCESS
       // =========================
 
-if(result.status === "success"){
+      if(result.status === "success"){
 
-    // Save member data for the ID card
-    localStorage.setItem(
-        "memberData",
-        JSON.stringify(memberData)
-    );
+        // Store ONLY the Member ID.
+        // The photo is Base64 and must not be stored in localStorage.
+        localStorage.setItem("registeredMemberId", memberId);
 
-    // Directly open View Card
-    window.location.href =
-        "identity-card.html?memberId=" +
-        encodeURIComponent(memberId);
+        // Directly open the ID Card
+        window.location.href =
+          "identity-card.html?memberId=" +
+          encodeURIComponent(memberId);
 
-    return;
-}
+        return;
+
+      }
       else if(result.status === "duplicate"){
 
         alert(
