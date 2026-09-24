@@ -222,7 +222,7 @@ td:first-child{
         <tr><td>माता</td><td id="motherName"></td></tr>
         <tr><td>गोत्र</td><td id="gotra"></td></tr>
         <tr><td>शहर</td><td id="nativePlace"></td></tr>
-      <tr><td>देश</td><td>India</td></tr>
+      <tr><td>देश</td><td id="country">India</td></tr>
       <tr><td>आयु</td><td id="age"></td></tr>
       <tr><td>व्यवसाय</td><td id="profession"></td></tr>
       <tr><td>ब्लड ग्रुप</td><td id="bloodGroup"></td></tr>
@@ -279,6 +279,7 @@ async function searchMember(silent = false){
     document.getElementById("motherName").innerText = d.motherName || "";
     document.getElementById("gotra").innerText = d.gotra || "";
     document.getElementById("nativePlace").innerText = d.nativePlace || "";
+    document.getElementById("country").innerText = "India";
     document.getElementById("age").innerText = d.age || "";
     document.getElementById("profession").innerText = d.profession || "";
     document.getElementById("bloodGroup").innerText = d.bloodGroup || "";
