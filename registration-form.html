@@ -3,1113 +3,1163 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>समाज पंजीकरण फॉर्म</title>
+    <title>समाज पंजीकरण फॉर्म</title>
 
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
-    }
-
-    body{
-      background:#02151c;
-      color:white;
-    }
-
-    .main-header{
-      width:100%;
-      padding:70px 20px;
-      text-align:center;
-      background:linear-gradient(
-        135deg,
-        #0d5d73,
-        #2b8aa0,
-        #5aa7b5
-      );
-    }
-
-    .tagline{
-      display:inline-block;
-      border:1px solid rgba(255,255,255,0.5);
-      padding:10px 25px;
-      border-radius:30px;
-      font-size:20px;
-      margin-bottom:25px;
-      background:rgba(255,255,255,0.08);
-    }
-
-    .main-header h1{
-      font-size:48px;
-      margin-bottom:20px;
-      line-height:1.3;
-    }
-
-    .line{
-      width:120px;
-      height:5px;
-      background:#ffd54f;
-      margin:0 auto 20px;
-      border-radius:10px;
-    }
-
-    .main-header p{
-      font-size:28px;
-    }
-
-    .wrapper{
-      padding:40px 20px;
-      display:flex;
-      justify-content:center;
-    }
-
-    .container{
-      width:100%;
-      max-width:1200px;
-      background:#06212a;
-      border:1px solid #0f738f;
-      border-radius:20px;
-      padding:35px;
-    }
-
-    .container h2{
-      text-align:center;
-      margin-bottom:30px;
-      font-size:34px;
-    }
-
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:25px;
-    }
-
-    .input-box{
-      display:flex;
-      flex-direction:column;
-    }
-
-    label{
-      margin-bottom:10px;
-      font-size:19px;
-      color:#d6d6d6;
-    }
-
-    input,
-    select,
-    textarea{
-      width:100%;
-      max-width:100%;
-      padding:15px;
-      border:1px solid #163a47;
-      border-radius:12px;
-      background:#0d3441;
-      color:white;
-      font-size:16px;
-      outline:none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus{
-      border-color:#1aa6c2;
-    }
-
-    textarea{
-      resize:none;
-    }
-
-    .full-width{
-      grid-column:span 2;
-    }
-
-    button{
-      width:100%;
-      padding:18px;
-      border:none;
-      border-radius:14px;
-      background:#0f738f;
-      color:white;
-      font-size:22px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    button:hover{
-      background:#1694b5;
-    }
-
-    button:disabled{
-      opacity:0.7;
-      cursor:not-allowed;
-    }
-
-    /* =========================
-       LOADING OVERLAY
-    ========================= */
-
-    #loadingOverlay{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.75);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:99999;
-    }
-
-    .loader-box{
-      background:#06212a;
-      padding:40px;
-      border-radius:20px;
-      text-align:center;
-      width:320px;
-      border:2px solid #0f738f;
-    }
-
-    .loader-box h3{
-      margin-top:20px;
-      font-size:24px;
-      color:white;
-    }
-
-    .loader-box p{
-      margin-top:10px;
-      color:#d6d6d6;
-    }
-
-    .spinner{
-      width:70px;
-      height:70px;
-      border:7px solid #1c4b57;
-      border-top:7px solid #ffd54f;
-      border-radius:50%;
-      animation:spin 1s linear infinite;
-      margin:auto;
-    }
-
-    @keyframes spin{
-      100%{
-        transform:rotate(360deg);
-      }
-    }
-
-    @media(max-width:768px){
-
-      .wrapper{
-        padding:24px 12px;
-      }
-
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-
-      .full-width{
-        grid-column:span 1;
-      }
-
-      .main-header{
-        padding:50px 15px;
-      }
-
-      .main-header h1{
-        font-size:26px;
-      }
-
-      .main-header p{
-        font-size:18px;
-      }
-
-      .container{
-        padding:20px;
-      }
-
-    }
-
-    @media(max-width:420px){
-
-      .wrapper{
-        padding:16px 8px;
-      }
-
-      .container{
-        padding:15px;
-      }
-
-      .main-header h1{
-        font-size:21px;
-      }
-
-      input,
-      select,
-      textarea{
-        padding:12px;
-        font-size:15px;
-      }
-
-    }
-
-  </style>
+    <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+          font-family:Arial,sans-serif;
+        }
+    
+        body{
+          background:#02151c;
+          color:white;
+        }
+    
+        .main-header{
+          width:100%;
+          padding:70px 20px;
+          text-align:center;
+          background:linear-gradient(
+            135deg,
+            #0d5d73,
+            #2b8aa0,
+            #5aa7b5
+          );
+        }
+    
+        .tagline{
+          display:inline-block;
+          border:1px solid rgba(255,255,255,0.5);
+          padding:10px 25px;
+          border-radius:30px;
+          font-size:20px;
+          margin-bottom:25px;
+          background:rgba(255,255,255,0.08);
+        }
+    
+        .main-header h1{
+          font-size:48px;
+          margin-bottom:20px;
+          line-height:1.3;
+        }
+    
+        .line{
+          width:120px;
+          height:5px;
+          background:#ffd54f;
+          margin:0 auto 20px;
+          border-radius:10px;
+        }
+    
+        .main-header p{
+          font-size:28px;
+        }
+    
+        .wrapper{
+          padding:40px 20px;
+          display:flex;
+          justify-content:center;
+        }
+    
+        .container{
+          width:100%;
+          max-width:1200px;
+          background:#06212a;
+          border:1px solid #0f738f;
+          border-radius:20px;
+          padding:35px;
+        }
+    
+        .container h2{
+          text-align:center;
+          margin-bottom:30px;
+          font-size:34px;
+        }
+    
+        .form-grid{
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:25px;
+        }
+    
+        .input-box{
+          display:flex;
+          flex-direction:column;
+        }
+    
+        label{
+          margin-bottom:10px;
+          font-size:19px;
+          color:#d6d6d6;
+        }
+    
+        input,
+        select,
+        textarea{
+          width:100%;
+          max-width:100%;
+          padding:15px;
+          border:1px solid #163a47;
+          border-radius:12px;
+          background:#0d3441;
+          color:white;
+          font-size:16px;
+          outline:none;
+        }
+    
+        input:focus,
+        select:focus,
+        textarea:focus{
+          border-color:#1aa6c2;
+        }
+    
+        textarea{
+          resize:none;
+        }
+    
+        .full-width{
+          grid-column:span 2;
+        }
+    
+        button{
+          width:100%;
+          padding:18px;
+          border:none;
+          border-radius:14px;
+          background:#0f738f;
+          color:white;
+          font-size:22px;
+          cursor:pointer;
+          transition:0.3s;
+        }
+    
+        button:hover{
+          background:#1694b5;
+        }
+    
+        button:disabled{
+          opacity:0.7;
+          cursor:not-allowed;
+        }
+    
+        /* =========================
+           LOADING OVERLAY
+        ========================= */
+    
+        #loadingOverlay{
+          position:fixed;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          background:rgba(0,0,0,0.75);
+          display:none;
+          justify-content:center;
+          align-items:center;
+          z-index:99999;
+        }
+    
+        .loader-box{
+          background:#06212a;
+          padding:40px;
+          border-radius:20px;
+          text-align:center;
+          width:320px;
+          border:2px solid #0f738f;
+        }
+    
+        .loader-box h3{
+          margin-top:20px;
+          font-size:24px;
+          color:white;
+        }
+    
+        .loader-box p{
+          margin-top:10px;
+          color:#d6d6d6;
+        }
+    
+        .spinner{
+          width:70px;
+          height:70px;
+          border:7px solid #1c4b57;
+          border-top:7px solid #ffd54f;
+          border-radius:50%;
+          animation:spin 1s linear infinite;
+          margin:auto;
+        }
+    
+        @keyframes spin{
+          100%{
+            transform:rotate(360deg);
+          }
+        }
+    
+        @media(max-width:768px){
+    
+          .wrapper{
+            padding:24px 12px;
+          }
+    
+          .form-grid{
+            grid-template-columns:1fr;
+          }
+    
+          .full-width{
+            grid-column:span 1;
+          }
+    
+          .main-header{
+            padding:50px 15px;
+          }
+    
+          .main-header h1{
+            font-size:26px;
+          }
+    
+          .main-header p{
+            font-size:18px;
+          }
+    
+          .container{
+            padding:20px;
+          }
+    
+        }
+    
+        @media(max-width:420px){
+    
+          .wrapper{
+            padding:16px 8px;
+          }
+    
+          .container{
+            padding:15px;
+          }
+    
+          .main-header h1{
+            font-size:21px;
+          }
+    
+          input,
+          select,
+          textarea{
+            padding:12px;
+            font-size:15px;
+          }
+    
+        }
+    </style>
 
 </head>
 
 <body>
 
-  <div class="main-header">
+    <div class="main-header">
 
-    <div class="tagline">
-      ॥ नर्मदे हर ॥
-    </div>
+        <div class="tagline">
+            ॥ नर्मदे हर ॥
+        </div>
 
-    <h1>
+        <h1>
       अखिल भारतीय नार्मदीय ब्राह्मण समाज महासभा
     </h1>
 
-    <div class="line"></div>
+        <div class="line"></div>
 
-    <p>
-      सामाजिक जनगणना पोर्टल
-    </p>
-	<div class="panjiyan-badge">
-  पंजीयन क्र. : MPTURN090420260011524
-</div>
-
-  </div>
-
-  <div class="wrapper">
-
-    <div class="container">
-
-      <h2>समाज पंजीकरण फॉर्म</h2>
-
-      <div class="form-grid">
-
-        <div class="input-box">
-          <label>पूरा नाम</label>
-          <input type="text" id="fullName">
-        </div>
-
-        <div class="input-box">
-          <label>पिता का नाम</label>
-          <input type="text" id="fatherName">
-        </div>
-
-        <div class="input-box">
-          <label>माता का नाम</label>
-          <input type="text" id="motherName">
-        </div>
-
-        <div class="input-box">
-          <label>गोत्र</label>
-          <input type="text" id="gotra">
-        </div>
-
-        <div class="input-box">
-          <label>मूल निवासी</label>
-          <input type="text" id="nativePlace">
-        </div>
-
-        <div class="input-box">
-          <label>आयु</label>
-          <input type="number" id="age">
-        </div>
-
-        <div class="input-box">
-
-          <label>वैवाहिक स्थिति</label>
-
-          <select id="maritalStatus">
-  <option>Married</option>
-  <option>Unmarried</option>
-  <option>Widowed</option>
-  <option>Divorced</option>
-</select>
-        </div>
-
-        <div class="input-box">
-          <label>व्यवसाय</label>
-          <select id="profession">
-  <option>Architect</option><option>Artist</option><option>Banker</option><option>Businessman</option>
-  <option>CA / Accountant</option><option>Chef / Hotelier</option><option>Consultant</option><option>Contractor</option>
-  <option>Defence Personnel</option><option>Doctor</option><option>Engineer</option><option>Entrepreneur</option>
-  <option>Farmer</option><option>Freelancer</option><option>Government Employee</option><option>Homemaker</option>
-  <option>Industrialist</option><option>IT Professional</option><option>Journalist</option><option>Lawyer</option>
-  <option>Management Professional</option><option>Media Professional</option><option>Pharmacy</option><option>Police Personnel</option>
-  <option>Professor</option><option>Real Estate Professional</option><option>Religious Professional</option><option>Retired</option>
-  <option>Sales & Marketing Professional</option><option>Scientist</option><option>Skilled Worker</option><option>Social Worker</option>
-  <option>Sports Professional</option><option>Student</option><option>Teacher</option><option>Technician</option>
-  <option>Trader</option><option>Transport Professional</option><option>Unemployed</option>
-</select>
-        </div>
-
-        <div class="input-box">
-          <label>शिक्षा</label>
-         <select id="education">
-  <option>Primary Education</option><option>Secondary Education</option><option>Higher Secondary (12th)</option>
-  <option>ITI</option><option>Polytechnic Diploma</option><option>B.A.</option><option>B.Sc.</option><option>B.Com.</option>
-  <option>B.Tech. / B.E.</option><option>BCA</option><option>BBA</option><option>MBBS</option><option>BDS</option>
-  <option>B.Pharm</option><option>B.Ed.</option><option>LLB</option><option>CA</option><option>CMA</option>
-  <option>M.A.</option><option>M.Sc.</option><option>M.Com.</option><option>M.Tech. / M.E.</option><option>MCA</option>
-  <option>MBA</option><option>M.Ed.</option><option>LLM</option><option>MD / MS</option><option>MDS</option>
-  <option>M.Pharm</option><option>M.Phil.</option><option>Ph.D.</option><option>Other Professional Qualification</option><option>Other</option>
-</select>
-        </div>
-
-        <div class="input-box">
-          <label>ब्लड ग्रुप</label>
-          <select id="bloodGroup">
-  <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
-  <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
-</select>
-        </div>
-
-        <div class="input-box">
-
-          <label>इकाई नाम</label>
-
-<select id="ikaiName">
-  <option>बकानेर (Bakaner)</option>
-  <option>बड़वाह (Barwah)</option>
-  <option>बड़वानी (Barwani)</option>
-  <option>बमनाला (Bamnala)</option>
-  <option>बेड़िया (Bedia)</option>
-  <option>भोपाल (Bhopal)</option>
-  <option>दिल्ली एनसीआर (Delhi NCR)</option>
-  <option>देवास (Dewas)</option>
-  <option>धरमपुरी (Dharampuri)</option>
-  <option>धामनोद (Dhamnod)</option>
-  <option>धार (Dhar)</option>
-  <option>गुजरात (Gujarat)</option>
-  <option>हरदा (Harda)</option>
-  <option>हरसूद (Harsud)</option>
-  <option>होशंगाबाद (Hoshangabad)</option>
-  <option>इंदौर (Indore)</option>
-  <option>इंदौर एरिया 02 (Indore Area 02)</option>
-  <option>इटारसी (Itarsi)</option>
-  <option>जबलपुर (Jabalpur)</option>
-  <option>करही (Karhi)</option>
-  <option>खरगोन (Khargone)</option>
-  <option>खिरकिया (Khirkiya)</option>
-  <option>खंडवा (Khandwa)</option>
-  <option>कसरावद (Kasrawad)</option>
-  <option>कोलार भोपाल (Kolar Bhopal)</option>
-  <option>मंडलेश्वर (Mandleshwar)</option>
-  <option>महू (Mhow)</option>
-  <option>महेश्वर (Maheshwar)</option>
-  <option>मिलन भोपाल (Milan Bhopal)</option>
-  <option>मुंबई (Mumbai)</option>
-  <option>मूंदी (Mundi)</option>
-  <option>नागपुर (Nagpur)</option>
-  <option>नर्मदा नगर पुनासा (Narmada Nagar Punasa)</option>
-  <option>पंधाना (Pandhana)</option>
-  <option>पीथमपुर (Pithampur)</option>
-  <option>प्रवासी पुणे (Pravasi Pune)</option>
-  <option>रायपुर (Raipur)</option>
-  <option>राऊ (Rau)</option>
-  <option>रहटगांव (Rahatgaon)</option>
-  <option>रतलाम (Ratlam)</option>
-  <option>सांवेर (Sanwer)</option>
-  <option>सनावद (Sanawad)</option>
-  <option>सिओनी मालवा (Seoni Malwa)</option>
-  <option>सिराली (Sirali)</option>
-  <option>सिहोर (Sehore)</option>
-  <option>सेंधवा (Sendhwa)</option>
-  <option>टिमरनी (Timarni)</option>
-  <option>उज्जैन (Ujjain)</option>
-  <option value="Others">अन्य (Others)</option>
-</select>
-
-        </div>
-
-        <div class="input-box"
-             id="otherCityBox"
-             style="display:none;">
-
-          <label>
-            अन्य शहर / इकाई का नाम
-          </label>
-
-          <input
-            type="text"
-            id="otherCity"
-            placeholder="शहर / इकाई का नाम लिखें"
-          >
-
-        </div>
-
-        <div class="input-box">
-          <label>जिला</label>
-          <input type="text" id="district">
-        </div>
-
-<div class="input-box">
- <label>देश का नाम</label>
- <select id="countryName">
-  <option>अफगानिस्तान (Afghanistan)</option>
-  <option>अल्बानिया (Albania)</option>
-  <option>अल्जीरिया (Algeria)</option>
-  <option>अंडोरा (Andorra)</option>
-  <option>अंगोला (Angola)</option>
-  <option>एंटीगुआ और बारबुडा (Antigua and Barbuda)</option>
-  <option>अर्जेंटीना (Argentina)</option>
-  <option>आर्मीनिया (Armenia)</option>
-  <option>ऑस्ट्रेलिया (Australia)</option>
-  <option>ऑस्ट्रिया (Austria)</option>
-  <option>अज़रबैजान (Azerbaijan)</option>
-  <option>बहामास (Bahamas)</option>
-  <option>बहरीन (Bahrain)</option>
-  <option>बांग्लादेश (Bangladesh)</option>
-  <option>बारबाडोस (Barbados)</option>
-  <option>बेलारूस (Belarus)</option>
-  <option>बेल्जियम (Belgium)</option>
-  <option>बेलीज़ (Belize)</option>
-  <option>बेनिन (Benin)</option>
-  <option>भूटान (Bhutan)</option>
-  <option>बोलीविया (Bolivia)</option>
-  <option>बोस्निया और हर्जेगोविना (Bosnia and Herzegovina)</option>
-  <option>बोत्सवाना (Botswana)</option>
-  <option>ब्राज़ील (Brazil)</option>
-  <option>ब्रुनेई (Brunei)</option>
-  <option>बुल्गारिया (Bulgaria)</option>
-  <option>बुर्किना फासो (Burkina Faso)</option>
-  <option>बुरुंडी (Burundi)</option>
-  <option>काबो वर्डे (Cabo Verde)</option>
-  <option>कंबोडिया (Cambodia)</option>
-  <option>कैमरून (Cameroon)</option>
-  <option>कनाडा (Canada)</option>
-  <option>मध्य अफ्रीकी गणराज्य (Central African Republic)</option>
-  <option>चाड (Chad)</option>
-  <option>चिली (Chile)</option>
-  <option>चीन (China)</option>
-  <option>कोलंबिया (Colombia)</option>
-  <option>कोमोरोस (Comoros)</option>
-  <option>कांगो (Congo)</option>
-  <option>कोस्टा रिका (Costa Rica)</option>
-  <option>आइवरी कोस्ट (Côte d'Ivoire)</option>
-  <option>क्रोएशिया (Croatia)</option>
-  <option>क्यूबा (Cuba)</option>
-  <option>साइप्रस (Cyprus)</option>
-  <option>चेकिया (Czechia)</option>
-  <option>लोकतांत्रिक कांगो गणराज्य (Democratic Republic of the Congo)</option>
-  <option>डेनमार्क (Denmark)</option>
-  <option>जिबूती (Djibouti)</option>
-  <option>डोमिनिका (Dominica)</option>
-  <option>डोमिनिकन गणराज्य (Dominican Republic)</option>
-  <option>इक्वाडोर (Ecuador)</option>
-  <option>मिस्र (Egypt)</option>
-  <option>अल साल्वाडोर (El Salvador)</option>
-  <option>इक्वेटोरियल गिनी (Equatorial Guinea)</option>
-  <option>इरिट्रिया (Eritrea)</option>
-  <option>एस्तोनिया (Estonia)</option>
-  <option>इस्वातिनी (Eswatini)</option>
-  <option>इथियोपिया (Ethiopia)</option>
-  <option>फिजी (Fiji)</option>
-  <option>फिनलैंड (Finland)</option>
-  <option>फ्रांस (France)</option>
-  <option>गैबॉन (Gabon)</option>
-  <option>गाम्बिया (Gambia)</option>
-  <option>जॉर्जिया (Georgia)</option>
-  <option>जर्मनी (Germany)</option>
-  <option>घाना (Ghana)</option>
-  <option>ग्रीस (Greece)</option>
-  <option>ग्रेनाडा (Grenada)</option>
-  <option>ग्वाटेमाला (Guatemala)</option>
-  <option>गिनी (Guinea)</option>
-  <option>गिनी-बिसाऊ (Guinea-Bissau)</option>
-  <option>गुयाना (Guyana)</option>
-  <option>हैती (Haiti)</option>
-  <option>होंडुरास (Honduras)</option>
-  <option>हंगरी (Hungary)</option>
-  <option>आइसलैंड (Iceland)</option>
-  <option>भारत (India)</option>
-  <option>इंडोनेशिया (Indonesia)</option>
-  <option>ईरान (Iran)</option>
-  <option>इराक (Iraq)</option>
-  <option>आयरलैंड (Ireland)</option>
-  <option>इज़राइल (Israel)</option>
-  <option>इटली (Italy)</option>
-  <option>जमैका (Jamaica)</option>
-  <option>जापान (Japan)</option>
-  <option>जॉर्डन (Jordan)</option>
-  <option>कज़ाखस्तान (Kazakhstan)</option>
-  <option>केन्या (Kenya)</option>
-  <option>किरिबाती (Kiribati)</option>
-  <option>कुवैत (Kuwait)</option>
-  <option>किर्गिज़स्तान (Kyrgyzstan)</option>
-  <option>लाओस (Laos)</option>
-  <option>लातविया (Latvia)</option>
-  <option>लेबनान (Lebanon)</option>
-  <option>लेसोथो (Lesotho)</option>
-  <option>लाइबेरिया (Liberia)</option>
-  <option>लीबिया (Libya)</option>
-  <option>लिकटेंस्टाइन (Liechtenstein)</option>
-  <option>लिथुआनिया (Lithuania)</option>
-  <option>लक्ज़मबर्ग (Luxembourg)</option>
-  <option>मेडागास्कर (Madagascar)</option>
-  <option>मलावी (Malawi)</option>
-  <option>मलेशिया (Malaysia)</option>
-  <option>मालदीव (Maldives)</option>
-  <option>माली (Mali)</option>
-  <option>माल्टा (Malta)</option>
-  <option>मार्शल द्वीपसमूह (Marshall Islands)</option>
-  <option>मॉरिटानिया (Mauritania)</option>
-  <option>मॉरीशस (Mauritius)</option>
-  <option>मेक्सिको (Mexico)</option>
-  <option>माइक्रोनेशिया (Micronesia)</option>
-  <option>मोल्दोवा (Moldova)</option>
-  <option>मोनाको (Monaco)</option>
-  <option>मंगोलिया (Mongolia)</option>
-  <option>मोंटेनेग्रो (Montenegro)</option>
-  <option>मोरक्को (Morocco)</option>
-  <option>मोज़ाम्बिक (Mozambique)</option>
-  <option>म्यांमार (Myanmar)</option>
-  <option>नामीबिया (Namibia)</option>
-  <option>नाउरू (Nauru)</option>
-  <option>नेपाल (Nepal)</option>
-  <option>नीदरलैंड (Netherlands)</option>
-  <option>न्यूज़ीलैंड (New Zealand)</option>
-  <option>निकारागुआ (Nicaragua)</option>
-  <option>नाइजर (Niger)</option>
-  <option>नाइजीरिया (Nigeria)</option>
-  <option>उत्तर कोरिया (North Korea)</option>
-  <option>उत्तरी मैसेडोनिया (North Macedonia)</option>
-  <option>नॉर्वे (Norway)</option>
-  <option>ओमान (Oman)</option>
-  <option>पाकिस्तान (Pakistan)</option>
-  <option>पलाऊ (Palau)</option>
-  <option>फिलिस्तीन (Palestine)</option>
-  <option>पनामा (Panama)</option>
-  <option>पापुआ न्यू गिनी (Papua New Guinea)</option>
-  <option>पराग्वे (Paraguay)</option>
-  <option>पेरू (Peru)</option>
-  <option>फिलीपींस (Philippines)</option>
-  <option>पोलैंड (Poland)</option>
-  <option>पुर्तगाल (Portugal)</option>
-  <option>क़तर (Qatar)</option>
-  <option>रोमानिया (Romania)</option>
-  <option>रूस (Russia)</option>
-  <option>रवांडा (Rwanda)</option>
-  <option>सेंट किट्स एंड नेविस (Saint Kitts and Nevis)</option>
-  <option>सेंट लूसिया (Saint Lucia)</option>
-  <option>सेंट विंसेंट एंड ग्रेनेडाइंस (Saint Vincent and the Grenadines)</option>
-  <option>समोआ (Samoa)</option>
-  <option>सैन मैरिनो (San Marino)</option>
-  <option>साओ टोमे और प्रिंसिपे (São Tomé and Príncipe)</option>
-  <option>सऊदी अरब (Saudi Arabia)</option>
-  <option>सेनेगल (Senegal)</option>
-  <option>सर्बिया (Serbia)</option>
-  <option>सेशेल्स (Seychelles)</option>
-  <option>सिएरा लियोन (Sierra Leone)</option>
-  <option>सिंगापुर (Singapore)</option>
-  <option>स्लोवाकिया (Slovakia)</option>
-  <option>स्लोवेनिया (Slovenia)</option>
-  <option>सोलोमन द्वीप (Solomon Islands)</option>
-  <option>सोमालिया (Somalia)</option>
-  <option>दक्षिण अफ्रीका (South Africa)</option>
-  <option>दक्षिण कोरिया (South Korea)</option>
-  <option>दक्षिण सूडान (South Sudan)</option>
-  <option>स्पेन (Spain)</option>
-  <option>श्रीलंका (Sri Lanka)</option>
-  <option>सूडान (Sudan)</option>
-  <option>सूरीनाम (Suriname)</option>
-  <option>स्वीडन (Sweden)</option>
-  <option>स्विट्ज़रलैंड (Switzerland)</option>
-  <option>सीरिया (Syria)</option>
-  <option>ताजिकिस्तान (Tajikistan)</option>
-  <option>तंज़ानिया (Tanzania)</option>
-  <option>थाईलैंड (Thailand)</option>
-  <option>तिमोर-लेस्ते (Timor-Leste)</option>
-  <option>टोगो (Togo)</option>
-  <option>टोंगा (Tonga)</option>
-  <option>त्रिनिदाद और टोबैगो (Trinidad and Tobago)</option>
-  <option>ट्यूनीशिया (Tunisia)</option>
-  <option>तुर्किये (Türkiye)</option>
-  <option>तुर्कमेनिस्तान (Turkmenistan)</option>
-  <option>तुवालु (Tuvalu)</option>
-  <option>युगांडा (Uganda)</option>
-  <option>यूक्रेन (Ukraine)</option>
-  <option>संयुक्त अरब अमीरात (United Arab Emirates)</option>
-  <option>यूनाइटेड किंगडम (United Kingdom)</option>
-  <option>संयुक्त राज्य अमेरिका (United States)</option>
-  <option>उरुग्वे (Uruguay)</option>
-  <option>उज़्बेकिस्तान (Uzbekistan)</option>
-  <option>वानुअतू (Vanuatu)</option>
-  <option>वेटिकन सिटी (Vatican City)</option>
-  <option>वेनेज़ुएला (Venezuela)</option>
-  <option>वियतनाम (Vietnam)</option>
-  <option>यमन (Yemen)</option>
-  <option>ज़ाम्बिया (Zambia)</option>
-  <option>ज़िम्बाब्वे (Zimbabwe)</option>
-  <option value="Others">अन्य (Others)</option>
- </select>
-</div>
-
-
-        <div class="input-box">
-          <label>पिन कोड</label>
-          <input type="text" id="pinCode">
-        </div>
-
-        <div class="input-box">
-          <label>मोबाइल नंबर</label>
-          <input type="text" id="contact1">
-        </div>
-
-        <div class="input-box">
-          <label>आधार कार्ड नंबर</label>
-          <input type="text" id="aadhaarNumber">
-        </div>
-
-        <div class="input-box">
-          <label>फोटो अपलोड करें</label>
-          <input type="file" id="photo" accept="image/*">
-        </div>
-
-        <div class="input-box full-width">
-          <label>स्थायी पता</label>
-          <textarea rows="4" id="permanentAddress"></textarea>
-        </div>
-
-        <div class="input-box full-width">
-          <label>वर्तमान पता</label>
-          <textarea rows="4" id="currentAddress"></textarea>
-        </div>
-
-        <div class="input-box full-width">
-
-          <button
-            type="button"
-            id="submitBtn"
-            onclick="generateCard()">
-
-            जमा करें
-
-          </button>
-
-        </div>
-
-      </div>
+        <p>
+            सामाजिक जनगणना पोर्टल
+        </p>
 
     </div>
 
-  </div>
+    <div class="wrapper">
 
-  <!-- =========================
+        <div class="container">
+
+            <h2>समाज पंजीकरण फॉर्म</h2>
+
+            <div class="form-grid">
+
+                <div class="input-box">
+                    <label>पूरा नाम</label>
+                    <input type="text" id="fullName">
+                </div>
+
+                <div class="input-box">
+                    <label>पिता का नाम</label>
+                    <input type="text" id="fatherName">
+                </div>
+
+                <div class="input-box">
+                    <label>माता का नाम</label>
+                    <input type="text" id="motherName">
+                </div>
+
+                <div class="input-box">
+                    <label>गोत्र</label>
+                    <input type="text" id="gotra">
+                </div>
+
+                <div class="input-box">
+                    <label>मूल निवासी</label>
+                    <input type="text" id="nativePlace">
+                </div>
+
+                <div class="input-box">
+                    <label>आयु</label>
+                    <input type="number" id="age">
+                </div>
+
+                <div class="input-box">
+
+                    <label>वैवाहिक स्थिति</label>
+
+                    <select id="maritalStatus">
+                        <option>Married</option>
+                        <option>Unmarried</option>
+                        <option>Widowed</option>
+                        <option>Divorced</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>व्यवसाय</label>
+                    <select id="profession">
+                        <option>Architect</option>
+                        <option>Artist</option>
+                        <option>Banker</option>
+                        <option>Businessman</option>
+                        <option>CA / Accountant</option>
+                        <option>Chef / Hotelier</option>
+                        <option>Consultant</option>
+                        <option>Contractor</option>
+                        <option>Defence Personnel</option>
+                        <option>Doctor</option>
+                        <option>Engineer</option>
+                        <option>Entrepreneur</option>
+                        <option>Farmer</option>
+                        <option>Freelancer</option>
+                        <option>Government Employee</option>
+                        <option>Homemaker</option>
+                        <option>Industrialist</option>
+                        <option>IT Professional</option>
+                        <option>Journalist</option>
+                        <option>Lawyer</option>
+                        <option>Management Professional</option>
+                        <option>Media Professional</option>
+                        <option>Pharmacy</option>
+                        <option>Police Personnel</option>
+                        <option>Professor</option>
+                        <option>Real Estate Professional</option>
+                        <option>Religious Professional</option>
+                        <option>Retired</option>
+                        <option>Sales & Marketing Professional</option>
+                        <option>Scientist</option>
+                        <option>Skilled Worker</option>
+                        <option>Social Worker</option>
+                        <option>Sports Professional</option>
+                        <option>Student</option>
+                        <option>Teacher</option>
+                        <option>Technician</option>
+                        <option>Trader</option>
+                        <option>Transport Professional</option>
+                        <option>Unemployed</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>शिक्षा</label>
+                    <select id="education">
+                        <option>Primary Education</option>
+                        <option>Secondary Education</option>
+                        <option>Higher Secondary (12th)</option>
+                        <option>ITI</option>
+                        <option>Polytechnic Diploma</option>
+                        <option>B.A.</option>
+                        <option>B.Sc.</option>
+                        <option>B.Com.</option>
+                        <option>B.Tech. / B.E.</option>
+                        <option>BCA</option>
+                        <option>BBA</option>
+                        <option>MBBS</option>
+                        <option>BDS</option>
+                        <option>B.Pharm</option>
+                        <option>B.Ed.</option>
+                        <option>LLB</option>
+                        <option>CA</option>
+                        <option>CMA</option>
+                        <option>M.A.</option>
+                        <option>M.Sc.</option>
+                        <option>M.Com.</option>
+                        <option>M.Tech. / M.E.</option>
+                        <option>MCA</option>
+                        <option>MBA</option>
+                        <option>M.Ed.</option>
+                        <option>LLM</option>
+                        <option>MD / MS</option>
+                        <option>MDS</option>
+                        <option>M.Pharm</option>
+                        <option>M.Phil.</option>
+                        <option>Ph.D.</option>
+                        <option>Other Professional Qualification</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label>ब्लड ग्रुप</label>
+                    <select id="bloodGroup">
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+
+                    <label>इकाई नाम</label>
+
+                    <select id="ikaiName">
+                        <option>बकानेर (Bakaner)</option>
+                        <option>बड़वाह (Barwah)</option>
+                        <option>बड़वानी (Barwani)</option>
+                        <option>बमनाला (Bamnala)</option>
+                        <option>बेड़िया (Bedia)</option>
+                        <option>भोपाल (Bhopal)</option>
+                        <option>दिल्ली एनसीआर (Delhi NCR)</option>
+                        <option>देवास (Dewas)</option>
+                        <option>धरमपुरी (Dharampuri)</option>
+                        <option>धामनोद (Dhamnod)</option>
+                        <option>धार (Dhar)</option>
+                        <option>गुजरात (Gujarat)</option>
+                        <option>हरदा (Harda)</option>
+                        <option>हरसूद (Harsud)</option>
+                        <option>होशंगाबाद (Hoshangabad)</option>
+                        <option>इंदौर (Indore)</option>
+                        <option>इंदौर एरिया 02 (Indore Area 02)</option>
+                        <option>इटारसी (Itarsi)</option>
+                        <option>जबलपुर (Jabalpur)</option>
+                        <option>करही (Karhi)</option>
+                        <option>खरगोन (Khargone)</option>
+                        <option>खिरकिया (Khirkiya)</option>
+                        <option>खंडवा (Khandwa)</option>
+                        <option>कसरावद (Kasrawad)</option>
+                        <option>कोलार भोपाल (Kolar Bhopal)</option>
+                        <option>मंडलेश्वर (Mandleshwar)</option>
+                        <option>महू (Mhow)</option>
+                        <option>महेश्वर (Maheshwar)</option>
+                        <option>मिलन भोपाल (Milan Bhopal)</option>
+                        <option>मुंबई (Mumbai)</option>
+                        <option>मूंदी (Mundi)</option>
+                        <option>नागपुर (Nagpur)</option>
+                        <option>नर्मदा नगर पुनासा (Narmada Nagar Punasa)</option>
+                        <option>पंधाना (Pandhana)</option>
+                        <option>पीथमपुर (Pithampur)</option>
+                        <option>प्रवासी पुणे (Pravasi Pune)</option>
+                        <option>रायपुर (Raipur)</option>
+                        <option>राऊ (Rau)</option>
+                        <option>रहटगांव (Rahatgaon)</option>
+                        <option>रतलाम (Ratlam)</option>
+                        <option>सांवेर (Sanwer)</option>
+                        <option>सनावद (Sanawad)</option>
+                        <option>सिओनी मालवा (Seoni Malwa)</option>
+                        <option>सिराली (Sirali)</option>
+                        <option>सिहोर (Sehore)</option>
+                        <option>सेंधवा (Sendhwa)</option>
+                        <option>टिमरनी (Timarni)</option>
+                        <option>उज्जैन (Ujjain)</option>
+                        <option value="Others">अन्य (Others)</option>
+                    </select>
+
+                </div>
+
+                <div class="input-box" id="otherCityBox" style="display:none;">
+
+                    <label>
+                        अन्य शहर / इकाई का नाम
+                    </label>
+
+                    <input type="text" id="otherCity" placeholder="शहर / इकाई का नाम लिखें">
+
+                </div>
+
+                <div class="input-box">
+                    <label>जिला</label>
+                    <input type="text" id="district">
+                </div>
+
+                <div class="input-box">
+                    <label>देश का नाम</label>
+                    <select id="countryName">
+                        <option>अफगानिस्तान (Afghanistan)</option>
+                        <option>अल्बानिया (Albania)</option>
+                        <option>अल्जीरिया (Algeria)</option>
+                        <option>अंडोरा (Andorra)</option>
+                        <option>अंगोला (Angola)</option>
+                        <option>एंटीगुआ और बारबुडा (Antigua and Barbuda)</option>
+                        <option>अर्जेंटीना (Argentina)</option>
+                        <option>आर्मीनिया (Armenia)</option>
+                        <option>ऑस्ट्रेलिया (Australia)</option>
+                        <option>ऑस्ट्रिया (Austria)</option>
+                        <option>अज़रबैजान (Azerbaijan)</option>
+                        <option>बहामास (Bahamas)</option>
+                        <option>बहरीन (Bahrain)</option>
+                        <option>बांग्लादेश (Bangladesh)</option>
+                        <option>बारबाडोस (Barbados)</option>
+                        <option>बेलारूस (Belarus)</option>
+                        <option>बेल्जियम (Belgium)</option>
+                        <option>बेलीज़ (Belize)</option>
+                        <option>बेनिन (Benin)</option>
+                        <option>भूटान (Bhutan)</option>
+                        <option>बोलीविया (Bolivia)</option>
+                        <option>बोस्निया और हर्जेगोविना (Bosnia and Herzegovina)</option>
+                        <option>बोत्सवाना (Botswana)</option>
+                        <option>ब्राज़ील (Brazil)</option>
+                        <option>ब्रुनेई (Brunei)</option>
+                        <option>बुल्गारिया (Bulgaria)</option>
+                        <option>बुर्किना फासो (Burkina Faso)</option>
+                        <option>बुरुंडी (Burundi)</option>
+                        <option>काबो वर्डे (Cabo Verde)</option>
+                        <option>कंबोडिया (Cambodia)</option>
+                        <option>कैमरून (Cameroon)</option>
+                        <option>कनाडा (Canada)</option>
+                        <option>मध्य अफ्रीकी गणराज्य (Central African Republic)</option>
+                        <option>चाड (Chad)</option>
+                        <option>चिली (Chile)</option>
+                        <option>चीन (China)</option>
+                        <option>कोलंबिया (Colombia)</option>
+                        <option>कोमोरोस (Comoros)</option>
+                        <option>कांगो (Congo)</option>
+                        <option>कोस्टा रिका (Costa Rica)</option>
+                        <option>आइवरी कोस्ट (Côte d'Ivoire)</option>
+                        <option>क्रोएशिया (Croatia)</option>
+                        <option>क्यूबा (Cuba)</option>
+                        <option>साइप्रस (Cyprus)</option>
+                        <option>चेकिया (Czechia)</option>
+                        <option>लोकतांत्रिक कांगो गणराज्य (Democratic Republic of the Congo)</option>
+                        <option>डेनमार्क (Denmark)</option>
+                        <option>जिबूती (Djibouti)</option>
+                        <option>डोमिनिका (Dominica)</option>
+                        <option>डोमिनिकन गणराज्य (Dominican Republic)</option>
+                        <option>इक्वाडोर (Ecuador)</option>
+                        <option>मिस्र (Egypt)</option>
+                        <option>अल साल्वाडोर (El Salvador)</option>
+                        <option>इक्वेटोरियल गिनी (Equatorial Guinea)</option>
+                        <option>इरिट्रिया (Eritrea)</option>
+                        <option>एस्तोनिया (Estonia)</option>
+                        <option>इस्वातिनी (Eswatini)</option>
+                        <option>इथियोपिया (Ethiopia)</option>
+                        <option>फिजी (Fiji)</option>
+                        <option>फिनलैंड (Finland)</option>
+                        <option>फ्रांस (France)</option>
+                        <option>गैबॉन (Gabon)</option>
+                        <option>गाम्बिया (Gambia)</option>
+                        <option>जॉर्जिया (Georgia)</option>
+                        <option>जर्मनी (Germany)</option>
+                        <option>घाना (Ghana)</option>
+                        <option>ग्रीस (Greece)</option>
+                        <option>ग्रेनाडा (Grenada)</option>
+                        <option>ग्वाटेमाला (Guatemala)</option>
+                        <option>गिनी (Guinea)</option>
+                        <option>गिनी-बिसाऊ (Guinea-Bissau)</option>
+                        <option>गुयाना (Guyana)</option>
+                        <option>हैती (Haiti)</option>
+                        <option>होंडुरास (Honduras)</option>
+                        <option>हंगरी (Hungary)</option>
+                        <option>आइसलैंड (Iceland)</option>
+                        <option>भारत (India)</option>
+                        <option>इंडोनेशिया (Indonesia)</option>
+                        <option>ईरान (Iran)</option>
+                        <option>इराक (Iraq)</option>
+                        <option>आयरलैंड (Ireland)</option>
+                        <option>इज़राइल (Israel)</option>
+                        <option>इटली (Italy)</option>
+                        <option>जमैका (Jamaica)</option>
+                        <option>जापान (Japan)</option>
+                        <option>जॉर्डन (Jordan)</option>
+                        <option>कज़ाखस्तान (Kazakhstan)</option>
+                        <option>केन्या (Kenya)</option>
+                        <option>किरिबाती (Kiribati)</option>
+                        <option>कुवैत (Kuwait)</option>
+                        <option>किर्गिज़स्तान (Kyrgyzstan)</option>
+                        <option>लाओस (Laos)</option>
+                        <option>लातविया (Latvia)</option>
+                        <option>लेबनान (Lebanon)</option>
+                        <option>लेसोथो (Lesotho)</option>
+                        <option>लाइबेरिया (Liberia)</option>
+                        <option>लीबिया (Libya)</option>
+                        <option>लिकटेंस्टाइन (Liechtenstein)</option>
+                        <option>लिथुआनिया (Lithuania)</option>
+                        <option>लक्ज़मबर्ग (Luxembourg)</option>
+                        <option>मेडागास्कर (Madagascar)</option>
+                        <option>मलावी (Malawi)</option>
+                        <option>मलेशिया (Malaysia)</option>
+                        <option>मालदीव (Maldives)</option>
+                        <option>माली (Mali)</option>
+                        <option>माल्टा (Malta)</option>
+                        <option>मार्शल द्वीपसमूह (Marshall Islands)</option>
+                        <option>मॉरिटानिया (Mauritania)</option>
+                        <option>मॉरीशस (Mauritius)</option>
+                        <option>मेक्सिको (Mexico)</option>
+                        <option>माइक्रोनेशिया (Micronesia)</option>
+                        <option>मोल्दोवा (Moldova)</option>
+                        <option>मोनाको (Monaco)</option>
+                        <option>मंगोलिया (Mongolia)</option>
+                        <option>मोंटेनेग्रो (Montenegro)</option>
+                        <option>मोरक्को (Morocco)</option>
+                        <option>मोज़ाम्बिक (Mozambique)</option>
+                        <option>म्यांमार (Myanmar)</option>
+                        <option>नामीबिया (Namibia)</option>
+                        <option>नाउरू (Nauru)</option>
+                        <option>नेपाल (Nepal)</option>
+                        <option>नीदरलैंड (Netherlands)</option>
+                        <option>न्यूज़ीलैंड (New Zealand)</option>
+                        <option>निकारागुआ (Nicaragua)</option>
+                        <option>नाइजर (Niger)</option>
+                        <option>नाइजीरिया (Nigeria)</option>
+                        <option>उत्तर कोरिया (North Korea)</option>
+                        <option>उत्तरी मैसेडोनिया (North Macedonia)</option>
+                        <option>नॉर्वे (Norway)</option>
+                        <option>ओमान (Oman)</option>
+                        <option>पाकिस्तान (Pakistan)</option>
+                        <option>पलाऊ (Palau)</option>
+                        <option>फिलिस्तीन (Palestine)</option>
+                        <option>पनामा (Panama)</option>
+                        <option>पापुआ न्यू गिनी (Papua New Guinea)</option>
+                        <option>पराग्वे (Paraguay)</option>
+                        <option>पेरू (Peru)</option>
+                        <option>फिलीपींस (Philippines)</option>
+                        <option>पोलैंड (Poland)</option>
+                        <option>पुर्तगाल (Portugal)</option>
+                        <option>क़तर (Qatar)</option>
+                        <option>रोमानिया (Romania)</option>
+                        <option>रूस (Russia)</option>
+                        <option>रवांडा (Rwanda)</option>
+                        <option>सेंट किट्स एंड नेविस (Saint Kitts and Nevis)</option>
+                        <option>सेंट लूसिया (Saint Lucia)</option>
+                        <option>सेंट विंसेंट एंड ग्रेनेडाइंस (Saint Vincent and the Grenadines)</option>
+                        <option>समोआ (Samoa)</option>
+                        <option>सैन मैरिनो (San Marino)</option>
+                        <option>साओ टोमे और प्रिंसिपे (São Tomé and Príncipe)</option>
+                        <option>सऊदी अरब (Saudi Arabia)</option>
+                        <option>सेनेगल (Senegal)</option>
+                        <option>सर्बिया (Serbia)</option>
+                        <option>सेशेल्स (Seychelles)</option>
+                        <option>सिएरा लियोन (Sierra Leone)</option>
+                        <option>सिंगापुर (Singapore)</option>
+                        <option>स्लोवाकिया (Slovakia)</option>
+                        <option>स्लोवेनिया (Slovenia)</option>
+                        <option>सोलोमन द्वीप (Solomon Islands)</option>
+                        <option>सोमालिया (Somalia)</option>
+                        <option>दक्षिण अफ्रीका (South Africa)</option>
+                        <option>दक्षिण कोरिया (South Korea)</option>
+                        <option>दक्षिण सूडान (South Sudan)</option>
+                        <option>स्पेन (Spain)</option>
+                        <option>श्रीलंका (Sri Lanka)</option>
+                        <option>सूडान (Sudan)</option>
+                        <option>सूरीनाम (Suriname)</option>
+                        <option>स्वीडन (Sweden)</option>
+                        <option>स्विट्ज़रलैंड (Switzerland)</option>
+                        <option>सीरिया (Syria)</option>
+                        <option>ताजिकिस्तान (Tajikistan)</option>
+                        <option>तंज़ानिया (Tanzania)</option>
+                        <option>थाईलैंड (Thailand)</option>
+                        <option>तिमोर-लेस्ते (Timor-Leste)</option>
+                        <option>टोगो (Togo)</option>
+                        <option>टोंगा (Tonga)</option>
+                        <option>त्रिनिदाद और टोबैगो (Trinidad and Tobago)</option>
+                        <option>ट्यूनीशिया (Tunisia)</option>
+                        <option>तुर्किये (Türkiye)</option>
+                        <option>तुर्कमेनिस्तान (Turkmenistan)</option>
+                        <option>तुवालु (Tuvalu)</option>
+                        <option>युगांडा (Uganda)</option>
+                        <option>यूक्रेन (Ukraine)</option>
+                        <option>संयुक्त अरब अमीरात (United Arab Emirates)</option>
+                        <option>यूनाइटेड किंगडम (United Kingdom)</option>
+                        <option>संयुक्त राज्य अमेरिका (United States)</option>
+                        <option>उरुग्वे (Uruguay)</option>
+                        <option>उज़्बेकिस्तान (Uzbekistan)</option>
+                        <option>वानुअतू (Vanuatu)</option>
+                        <option>वेटिकन सिटी (Vatican City)</option>
+                        <option>वेनेज़ुएला (Venezuela)</option>
+                        <option>वियतनाम (Vietnam)</option>
+                        <option>यमन (Yemen)</option>
+                        <option>ज़ाम्बिया (Zambia)</option>
+                        <option>ज़िम्बाब्वे (Zimbabwe)</option>
+                        <option value="Others">अन्य (Others)</option>
+                    </select>
+                </div>
+
+
+                <div class="input-box">
+                    <label>पिन कोड</label>
+                    <input type="text" id="pinCode">
+                </div>
+
+                <div class="input-box">
+                    <label>मोबाइल नंबर</label>
+                    <input type="text" id="contact1">
+                </div>
+
+                <div class="input-box">
+                    <label>आधार कार्ड नंबर</label>
+                    <input type="text" id="aadhaarNumber">
+                </div>
+
+                <div class="input-box">
+                    <label>फोटो अपलोड करें</label>
+                    <input type="file" id="photo" accept="image/*">
+                </div>
+
+                <div class="input-box full-width">
+                    <label>स्थायी पता</label>
+                    <textarea rows="4" id="permanentAddress"></textarea>
+                </div>
+
+                <div class="input-box full-width">
+                    <label>वर्तमान पता</label>
+                    <textarea rows="4" id="currentAddress"></textarea>
+                </div>
+
+                <div class="input-box full-width">
+
+                    <button type="button" id="submitBtn" onclick="generateCard()">
+
+                        जमा करें
+
+                    </button>
+
+                </div>
+
+            </div>
+            <br/>
+            <div class="panjiyan-badge" style="text-align: center;">
+                पंजीयन क्र. : MPTURN090420260011524
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =========================
        LOADING POPUP
   ========================= -->
 
-  <div id="loadingOverlay">
+    <div id="loadingOverlay">
 
-    <div class="loader-box">
+        <div class="loader-box">
 
-      <div class="spinner"></div>
+            <div class="spinner"></div>
 
-      <h3>कृपया प्रतीक्षा करें...</h3>
+            <h3>कृपया प्रतीक्षा करें...</h3>
 
-      <p>
-        आपका डेटा सेव किया जा रहा है
-      </p>
+            <p>
+                आपका डेटा सेव किया जा रहा है
+            </p>
+
+        </div>
 
     </div>
 
-  </div>
-
-<script>
-
-  // =========================
-  // GOOGLE APPS SCRIPT URL
-  // =========================
-
-  const SCRIPT_URL =  "https://script.google.com/macros/s/AKfycbx_U1PjsD2LdIVbc9QZ0Xc-asbaJts57qAH0Z129Zr7FL0hs3QTRMhCCT0X0djt7n4/exec";
-
-  // =========================
-  // PANCHIYAN NUMBER
-  // =========================
-
-  const PANCHIYAN_NUMBER = "MPTURN090420260011524";
-
-  // =========================
-  // IKAI NUMBER
-  // =========================
-
-  const ikaiNumbers = {
-
-  "इंदौर (Indore)": "IND",
-  "इंदौर एरिया 02 (Indore Area 02)": "IND2",
-  "उज्जैन (Ujjain)": "UJJ",
-  "कसरावद (Kasrawad)": "KAS",
-  "कोलार भोपाल (Kolar Bhopal)": "KOL",
-  "खंडवा (Khandwa)": "KND",
-  "खरगोन (Khargone)": "KHG",
-  "खिरकिया (Khirkiya)": "KHI",
-  "गुजरात (Gujarat)": "GUJ",
-  "जबलपुर (Jabalpur)": "JAB",
-  "टिमरनी (Timarni)": "TIM",
-  "दिल्ली एनसीआर (Delhi NCR)": "DEL",
-  "देवास (Dewas)": "DEW",
-  "धामनोद (Dhamnod)": "DHN",
-  "धार (Dhar)": "DHR",
-  "धरमपुरी (Dharampuri)": "DHP",
-  "नर्मदा नगर पुनासा (Narmada Nagar Punasa)": "NRP",
-  "नागपुर (Nagpur)": "NAG",
-  "पंधाना (Pandhana)": "PAN",
-  "पीथमपुर (Pithampur)": "PIT",
-  "प्रवासी पुणे (Pravashi Pune)": "PRP",
-  "बकानेर (Bakaner)": "BAK",
-  "बड़वाह (Barwah)": "BRW",
-  "बमनाला (Bamnala)": "BAM",
-  "बेड़िया (Bedia)": "BED",
-  "बड़वानी (Barwani)": "BRN",
-  "भोपाल (Bhopal)": "BHO",
-  "मंडलेश्वर (Mandleshwar)": "MAN",
-  "महेश्वर (Maheshwar)": "MAH",
-  "मिलन भोपाल (Milan Bhopal)": "MLB",
-  "मूंदी (Mundi)": "MUN",
-  "मुंबई (Mumbai)": "MUM",
-  "महू (Mhow)": "MHO",
-  "राऊ (Rau)": "RAU",
-  "रहटगांव (Rahatgaon)": "RHT",
-  "रायपुर (Raipur)": "RAI",
-  "रतलाम (Ratlam)": "RAT",
-  "सनावद (Sanawad)": "SNW",
-  "सांवेर (Sanwer)": "SNR",
-  "सिओनी मालवा (Seoni Malwa)": "SEM",
-  "सिराली (Sirali)": "SIR",
-  "सिहोर (Sehore)": "SEH",
-  "सेंधवा (Sendhwa)": "SDW",
-  "हरदा (Harda)": "HRD",
-  "हरसूद (Harsud)": "HRS",
-  "होशंगाबाद (Hoshangabad)": "HOS",
-  "इटारसी (Itarsi)": "ITA",
-  "करही (Karhi)": "KAR",
-  "अन्य (Others)": "OTH"
-  };
-
-  // =========================
-  // OTHER CITY SHOW
-  // =========================
-
-  document.getElementById("ikaiName")
-    .addEventListener("change", function(){
-
-      let selectedValue = this.value;
-
-      let otherCityBox =
-        document.getElementById("otherCityBox");
-
-      if(selectedValue === "Others"){
-
-        otherCityBox.style.display = "flex";
-
-      }else{
-
-        otherCityBox.style.display = "none";
-
-      }
-
-    });
-
-  // =========================
-  // GENERATE CARD
-  // =========================
-
-  async function generateCard(){
-
-    try{
-
-      // =========================
-      // SHOW LOADER
-      // =========================
-
-      document.getElementById("loadingOverlay").style.display = "flex";
-
-      document.getElementById("submitBtn").disabled = true;
-
-      document.getElementById("submitBtn").innerText =
-        "प्रोसेसिंग...";
-
-      const requiredFields = [
-
-        { id: "fullName", name: "पूरा नाम" },
-        { id: "fatherName", name: "पिता का नाम" },
-        { id: "motherName", name: "माता का नाम" },
-        { id: "gotra", name: "गोत्र" },
-        { id: "nativePlace", name: "मूल निवासी" },
-        { id: "age", name: "आयु" },
-        { id: "profession", name: "व्यवसाय" },
-        { id: "education", name: "शिक्षा" },
-        { id: "bloodGroup", name: "ब्लड ग्रुप" },
-        { id: "district", name: "जिला" },
-        { id: "pinCode", name: "पिन कोड" },
-        { id: "contact1", name: "मोबाइल नंबर" },
-        { id: "aadhaarNumber", name: "आधार नंबर" }
-
-      ];
-
-      for (let field of requiredFields) {
-
-        let el = document.getElementById(field.id);
-
-        if (!el.value || el.value.trim() === "") {
-
-          alert("❌ यह फील्ड अनिवार्य है: " + field.name);
-
-          document.getElementById("loadingOverlay").style.display = "none";
-
-          document.getElementById("submitBtn").disabled = false;
-
-          document.getElementById("submitBtn").innerText =
-            "जमा करें";
-
-          el.focus();
-
-          return;
-
-        }
-
-      }
-
-      let ikaiValue =
-        document.getElementById("ikaiName").value;
-
-      if(ikaiValue === "Others"){
-
-        ikaiValue =
-          document.getElementById("otherCity").value;
-
-      }
-
-      let ikaiNumber =
-        ikaiNumbers[ikaiValue] || "999";
-
-      // =========================
-      // PHOTO BASE64
-      // =========================
-
-      let photoBase64 = "";
-
-      const file =
-        document.getElementById("photo").files[0];
-
-      if(file){
-
-        photoBase64 =
-          await convertToBase64(file);
-
-      }
-
-      // =========================
-      // DATA OBJECT
-      // =========================
-
-      let memberData = {
-
-        ikaiCode:
-          ikaiNumber,
-
-        fullName:
-          document.getElementById("fullName").value,
-
-        fatherName:
-          document.getElementById("fatherName").value,
-
-        motherName:
-          document.getElementById("motherName").value,
-
-        gotra:
-          document.getElementById("gotra").value,
-
-        nativePlace:
-          document.getElementById("nativePlace").value,
-
-        age:
-          document.getElementById("age").value,
-
-        maritalStatus:
-          document.getElementById("maritalStatus").value,
-
-        profession:
-          document.getElementById("profession").value,
-
-        education:
-          document.getElementById("education").value,
-
-        bloodGroup:
-          document.getElementById("bloodGroup").value,
-
-        ikaiName:
-          ikaiValue,
+    <script>
+        // =========================
+          // GOOGLE APPS SCRIPT URL
+          // =========================
         
-        ikaiCountry:
-          document.getElementById("countryName").value,
-
-        district:
-          document.getElementById("district").value,
-
-        pinCode:
-          document.getElementById("pinCode").value,
-
-        contact1:
-          document.getElementById("contact1").value,
-
-        aadhaarNumber:
-          document.getElementById("aadhaarNumber").value,
-
-        permanentAddress:
-          document.getElementById("permanentAddress").value,
-
-        currentAddress:
-          document.getElementById("currentAddress").value,
-
-        photo:
-          photoBase64
-
-      };
-
-      // =========================
-      // SAVE TO GOOGLE SHEET
-      // =========================
-
-      const response = await fetch(
-        SCRIPT_URL,
-        {
-
-          method: "POST",
-
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-
-          body: JSON.stringify(memberData)
-
-        }
-      );
-
-      const result =
-        await response.json();
-
-      // =========================
-      // SUCCESS
-      // =========================
-
-      if(result.status === "success"){
-
-        const memberId = result.memberId;
-
-        document.getElementById("loadingOverlay").querySelector("h3").innerText =
-          "पंजीकरण सफल!";
-        document.getElementById("loadingOverlay").querySelector("p").innerText =
-          "ID Card तैयार किया जा रहा है...";
-
-        // Small buffer so the sheet write is fully committed before the
-        // ID card page tries to read it back (avoids a race condition).
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // Go straight to the ID card view for this member
-        window.location.href =
-          "identity-card.html?memberId=" + encodeURIComponent(memberId);
-
-        return;
-
-      }
-      else if(result.status === "duplicate"){
-
-        alert(
-          "यह Aadhaar Number पहले से मौजूद है।"
-        );
-
-      }
-      else{
-
-        alert(
-          "Error : " + result.message
-        );
-
-      }
-
-      // =========================
-      // CLEAR FORM
-      // =========================
-
-      document.getElementById("fullName").value = "";
-      document.getElementById("fatherName").value = "";
-      document.getElementById("motherName").value = "";
-      document.getElementById("gotra").value = "";
-      document.getElementById("nativePlace").value = "";
-      document.getElementById("age").value = "";
-      document.getElementById("profession").value = "";
-      document.getElementById("education").value = "";
-      document.getElementById("bloodGroup").value = "";
-      document.getElementById("district").value = "";
-      document.getElementById("pinCode").value = "";
-      document.getElementById("contact1").value = "";
-      document.getElementById("aadhaarNumber").value = "";
-      document.getElementById("permanentAddress").value = "";
-      document.getElementById("currentAddress").value = "";
-      document.getElementById("photo").value = "";
-
-      // =========================
-      // HIDE LOADER
-      // =========================
-
-      document.getElementById("loadingOverlay").style.display = "none";
-
-      document.getElementById("submitBtn").disabled = false;
-
-      document.getElementById("submitBtn").innerText =
-        "जमा करें";
-
-    }catch(error){
-
-      console.log(error);
-
-      document.getElementById("loadingOverlay").style.display = "none";
-
-      document.getElementById("submitBtn").disabled = false;
-
-      document.getElementById("submitBtn").innerText =
-        "जमा करें";
-
-      alert(
-        "डेटा सेव करने में समस्या आ रही है"
-      );
-
-    }
-
-  }
-
-  // =========================
-  // CONVERT IMAGE
-  // =========================
-
-  function convertToBase64(file){
-
-    return new Promise((resolve, reject) => {
-
-      const reader =
-        new FileReader();
-
-      reader.readAsDataURL(file);
-
-      reader.onload = () =>
-        resolve(reader.result);
-
-      reader.onerror = error =>
-        reject(error);
-
-    });
-
-  }
-
-</script>
+          //const SCRIPT_URL =  "https://script.google.com/macros/s/AKfycbx_U1PjsD2LdIVbc9QZ0Xc-asbaJts57qAH0Z129Zr7FL0hs3QTRMhCCT0X0djt7n4/exec";
+          const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz57XeQ0Rhy0RLyC2Nw9HA_c8DJqHIQY2FH591mJqHqkn-IXxh7lqlGlkWxNEc1Ht3Q/exec";
+        
+          // =========================
+          // PANCHIYAN NUMBER
+          // =========================
+        
+          const PANCHIYAN_NUMBER = "MPTURN090420260011524";
+        
+          // =========================
+          // IKAI NUMBER
+          // =========================
+        
+          const ikaiNumbers = {
+        
+          "इंदौर (Indore)": "IND",
+          "इंदौर एरिया 02 (Indore Area 02)": "IND2",
+          "उज्जैन (Ujjain)": "UJJ",
+          "कसरावद (Kasrawad)": "KAS",
+          "कोलार भोपाल (Kolar Bhopal)": "KOL",
+          "खंडवा (Khandwa)": "KND",
+          "खरगोन (Khargone)": "KHG",
+          "खिरकिया (Khirkiya)": "KHI",
+          "गुजरात (Gujarat)": "GUJ",
+          "जबलपुर (Jabalpur)": "JAB",
+          "टिमरनी (Timarni)": "TIM",
+          "दिल्ली एनसीआर (Delhi NCR)": "DEL",
+          "देवास (Dewas)": "DEW",
+          "धामनोद (Dhamnod)": "DHN",
+          "धार (Dhar)": "DHR",
+          "धरमपुरी (Dharampuri)": "DHP",
+          "नर्मदा नगर पुनासा (Narmada Nagar Punasa)": "NRP",
+          "नागपुर (Nagpur)": "NAG",
+          "पंधाना (Pandhana)": "PAN",
+          "पीथमपुर (Pithampur)": "PIT",
+          "प्रवासी पुणे (Pravashi Pune)": "PRP",
+          "बकानेर (Bakaner)": "BAK",
+          "बड़वाह (Barwah)": "BRW",
+          "बमनाला (Bamnala)": "BAM",
+          "बेड़िया (Bedia)": "BED",
+          "बड़वानी (Barwani)": "BRN",
+          "भोपाल (Bhopal)": "BHO",
+          "मंडलेश्वर (Mandleshwar)": "MAN",
+          "महेश्वर (Maheshwar)": "MAH",
+          "मिलन भोपाल (Milan Bhopal)": "MLB",
+          "मूंदी (Mundi)": "MUN",
+          "मुंबई (Mumbai)": "MUM",
+          "महू (Mhow)": "MHO",
+          "राऊ (Rau)": "RAU",
+          "रहटगांव (Rahatgaon)": "RHT",
+          "रायपुर (Raipur)": "RAI",
+          "रतलाम (Ratlam)": "RAT",
+          "सनावद (Sanawad)": "SNW",
+          "सांवेर (Sanwer)": "SNR",
+          "सिओनी मालवा (Seoni Malwa)": "SEM",
+          "सिराली (Sirali)": "SIR",
+          "सिहोर (Sehore)": "SEH",
+          "सेंधवा (Sendhwa)": "SDW",
+          "हरदा (Harda)": "HRD",
+          "हरसूद (Harsud)": "HRS",
+          "होशंगाबाद (Hoshangabad)": "HOS",
+          "इटारसी (Itarsi)": "ITA",
+          "करही (Karhi)": "KAR",
+          "अन्य (Others)": "OTH"
+          };
+        
+          // =========================
+          // OTHER CITY SHOW
+          // =========================
+        
+          document.getElementById("ikaiName")
+            .addEventListener("change", function(){
+        
+              let selectedValue = this.value;
+        
+              let otherCityBox =
+                document.getElementById("otherCityBox");
+        
+              if(selectedValue === "Others"){
+        
+                otherCityBox.style.display = "flex";
+        
+              }else{
+        
+                otherCityBox.style.display = "none";
+        
+              }
+        
+            });
+        
+          // =========================
+          // GENERATE CARD
+          // =========================
+        
+          async function generateCard(){
+        
+            try{
+        
+              // =========================
+              // SHOW LOADER
+              // =========================
+        
+              document.getElementById("loadingOverlay").style.display = "flex";
+        
+              document.getElementById("submitBtn").disabled = true;
+        
+              document.getElementById("submitBtn").innerText =
+                "प्रोसेसिंग...";
+        
+              const requiredFields = [
+        
+                { id: "fullName", name: "पूरा नाम" },
+                { id: "fatherName", name: "पिता का नाम" },
+                { id: "motherName", name: "माता का नाम" },
+                { id: "gotra", name: "गोत्र" },
+                { id: "nativePlace", name: "मूल निवासी" },
+                { id: "age", name: "आयु" },
+                { id: "profession", name: "व्यवसाय" },
+                { id: "education", name: "शिक्षा" },
+                { id: "bloodGroup", name: "ब्लड ग्रुप" },
+                { id: "district", name: "जिला" },
+                { id: "pinCode", name: "पिन कोड" },
+                { id: "contact1", name: "मोबाइल नंबर" },
+                { id: "aadhaarNumber", name: "आधार नंबर" }
+        
+              ];
+        
+              for (let field of requiredFields) {
+        
+                let el = document.getElementById(field.id);
+        
+                if (!el.value || el.value.trim() === "") {
+        
+                  alert("❌ यह फील्ड अनिवार्य है: " + field.name);
+        
+                  document.getElementById("loadingOverlay").style.display = "none";
+        
+                  document.getElementById("submitBtn").disabled = false;
+        
+                  document.getElementById("submitBtn").innerText =
+                    "जमा करें";
+        
+                  el.focus();
+        
+                  return;
+        
+                }
+        
+              }
+        
+              let ikaiValue =
+                document.getElementById("ikaiName").value;
+        
+              if(ikaiValue === "Others"){
+        
+                ikaiValue =
+                  document.getElementById("otherCity").value;
+        
+              }
+        
+              let ikaiNumber =
+                ikaiNumbers[ikaiValue] || "999";
+        
+              // =========================
+              // PHOTO BASE64
+              // =========================
+        
+              let photoBase64 = "";
+        
+              const file =
+                document.getElementById("photo").files[0];
+        
+              if(file){
+        
+                photoBase64 =
+                  await convertToBase64(file);
+        
+              }
+        
+              // =========================
+              // DATA OBJECT
+              // =========================
+        
+              let memberData = {
+        
+                ikaiCode:
+                  ikaiNumber,
+        
+                fullName:
+                  document.getElementById("fullName").value,
+        
+                fatherName:
+                  document.getElementById("fatherName").value,
+        
+                motherName:
+                  document.getElementById("motherName").value,
+        
+                gotra:
+                  document.getElementById("gotra").value,
+        
+                nativePlace:
+                  document.getElementById("nativePlace").value,
+        
+                age:
+                  document.getElementById("age").value,
+        
+                maritalStatus:
+                  document.getElementById("maritalStatus").value,
+        
+                profession:
+                  document.getElementById("profession").value,
+        
+                education:
+                  document.getElementById("education").value,
+        
+                bloodGroup:
+                  document.getElementById("bloodGroup").value,
+        
+                ikaiName:
+                  ikaiValue,
+                
+                ikaiCountry:
+                  document.getElementById("countryName").value,
+        
+                district:
+                  document.getElementById("district").value,
+        
+                pinCode:
+                  document.getElementById("pinCode").value,
+        
+                contact1:
+                  document.getElementById("contact1").value,
+        
+                aadhaarNumber:
+                  document.getElementById("aadhaarNumber").value,
+        
+                permanentAddress:
+                  document.getElementById("permanentAddress").value,
+        
+                currentAddress:
+                  document.getElementById("currentAddress").value,
+        
+                photo:
+                  photoBase64
+        
+              };
+        
+              // =========================
+              // SAVE TO GOOGLE SHEET
+              // =========================
+        
+              const response = await fetch(
+                SCRIPT_URL,
+                {
+        
+                  method: "POST",
+        
+                  headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                  },
+        
+                  body: JSON.stringify(memberData)
+        
+                }
+              );
+        
+              const result =
+                await response.json();
+        
+              // =========================
+              // SUCCESS
+              // =========================
+        
+              if(result.status === "success"){
+        
+                const memberId = result.memberId;
+        
+                document.getElementById("loadingOverlay").querySelector("h3").innerText =
+                  "पंजीकरण सफल!";
+                document.getElementById("loadingOverlay").querySelector("p").innerText =
+                  "ID Card तैयार किया जा रहा है...";
+        
+                // Small buffer so the sheet write is fully committed before the
+                // ID card page tries to read it back (avoids a race condition).
+                await new Promise(resolve => setTimeout(resolve, 1500));
+        
+                // Go straight to the ID card view for this member
+                window.location.href =
+                  "identity-card.html?memberId=" + encodeURIComponent(memberId);
+        
+                return;
+        
+              }
+              else if(result.status === "duplicate"){
+        
+                alert(
+                  "यह Aadhaar Number पहले से मौजूद है।"
+                );
+        
+              }
+              else{
+        
+                alert(
+                  "Error : " + result.message
+                );
+        
+              }
+        
+              // =========================
+              // CLEAR FORM
+              // =========================
+        
+              document.getElementById("fullName").value = "";
+              document.getElementById("fatherName").value = "";
+              document.getElementById("motherName").value = "";
+              document.getElementById("gotra").value = "";
+              document.getElementById("nativePlace").value = "";
+              document.getElementById("age").value = "";
+              document.getElementById("profession").value = "";
+              document.getElementById("education").value = "";
+              document.getElementById("bloodGroup").value = "";
+              document.getElementById("district").value = "";
+              document.getElementById("pinCode").value = "";
+              document.getElementById("contact1").value = "";
+              document.getElementById("aadhaarNumber").value = "";
+              document.getElementById("permanentAddress").value = "";
+              document.getElementById("currentAddress").value = "";
+              document.getElementById("photo").value = "";
+        
+              // =========================
+              // HIDE LOADER
+              // =========================
+        
+              document.getElementById("loadingOverlay").style.display = "none";
+        
+              document.getElementById("submitBtn").disabled = false;
+        
+              document.getElementById("submitBtn").innerText =
+                "जमा करें";
+        
+            }catch(error){
+        
+              console.log(error);
+        
+              document.getElementById("loadingOverlay").style.display = "none";
+        
+              document.getElementById("submitBtn").disabled = false;
+        
+              document.getElementById("submitBtn").innerText =
+                "जमा करें";
+        
+              alert(
+                "डेटा सेव करने में समस्या आ रही है"
+              );
+        
+            }
+        
+          }
+        
+          // =========================
+          // CONVERT IMAGE
+          // =========================
+        
+          function convertToBase64(file){
+        
+            return new Promise((resolve, reject) => {
+        
+              const reader =
+                new FileReader();
+        
+              reader.readAsDataURL(file);
+        
+              reader.onload = () =>
+                resolve(reader.result);
+        
+              reader.onerror = error =>
+                reject(error);
+        
+            });
+        
+          }
+    </script>
 
 </body>
+
 </html>
